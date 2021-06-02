@@ -1,56 +1,44 @@
-// var CanvasResize = function (canvas, width, height) {
-// 	var img = new Image();
-// 	img.onload = function () {
-// 		// canvas.width = width;
-// 		// canvas.height = height;
-// 		// var ctx = canvas.getContext('2d');
-// 		// ctx.drawImage(img, 0, 0, width, height);
-// 	}
-// 	img.src = canvas.toDataURL();
-// }
-
-// window.addEventListener("DOMContentLoaded", function() {
-// 	var ofd = document.getElementById("selectfile");
-// 	ofd.addEventListener("change", function(evt){
-// 		//画像データの入力先
-// 		var img = null
-// 		var canvas = document.getElementById("canvas");
-
-// 		var file = evt.target.files;
-// 		var reader = new FileReader();
-
-// 		//dataURL形式でファイルを読み込む
-// 		reader.readAsDataURL(file[0]);
-
-// 		//ファイルの読込が終了した時の処理
-// 		reader.onloadend = function(){
-// 			img = new Image();
-// 			img.onload = function(){
-// 				/*画像加工*/
-// 				var context = canvas.getContext('2d');
-// 				var width = img.width
-// 				var height = img.height
-// 				canvas.width = width;
-// 				canvas.height = height;
-// 				context.drawImage(img, 0, 0);
-				
-// 				CanvasResize(canvas, 300, 300)//リサイズ
-// 			}
-// 			img.src = reader.result
-// 		}
-// 	},false);
-// });
-// document.getElementById('button').onclick = () => {
-// 	var text = document.getElementById('image_size').value;
-// 	navigator.clipboard.writeText(text).then(e => {
-// 		alert('コピーできました');
-// 	});
-// };
+const imgWidth = 300;
+var imgHeight = 0;
 
 class CodeToImage{
-
+	
 	static previewImage(obj)
 	{
+
+		const img = document.getElementById('preview');
+		const reader = new FileReader();
+		const imgReader = new Image();
+
+		reader.onloadend = () => {
+			imgReader.onload = () => {
+				//文字列の切り出し
+				const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
+				imgHeight = Math.round(imgReader.height * (imgWidth / imgReader.width));//画像の高さを計算
+				const canvas = document.createElement('canvas');
+				canvas.width = imgWidth;
+				canvas.height = imgHeight;
+				const ctx = canvas.getContext('2d');
+				ctx.drawImage(imgReader,0,0,imgWidth,imgHeight);
+				
+				img.src = canvas.toDataURL(imgType);
+
+				// ボタンの表示
+				const changeButton = document.getElementById("change");
+				const copyButton = document.getElementById("copy");
+				
+				if(changeButton.style.display!="block"){
+					changeButton.style.display = "block";
+					copyButton.style.display = "none";
+				}
+				
+			}
+			imgReader.src = reader.result;
+		}
+		reader.readAsDataURL(obj.files[0]);
+	}
+
+	static showTileText(){
 		function productTileImage(width, height, pixel_data) {
 			var tileString = "";
 			const tileElement = document.querySelector('#tile');
@@ -65,8 +53,9 @@ class CodeToImage{
 			}
 			tileElement.innerHTML = tileString;
 			let imageSize = height * 2.5;
+			//コンテンツの幅を指定（これがないと下の余白がバグ）
 			document.getElementById('tile-image').style.height = `${imageSize}px`;
-			console.log(height);
+			
 		}
 
 		function getPixelData(src, dst, width, height) {
@@ -82,41 +71,33 @@ class CodeToImage{
 					dst[idx + 3] = src[idx+3];
 				}
 			}
-			// console.log(width, height, pixel_data.length)
+			console.log(height)
 			return (pixel_data);
 		};
+		
+		const image = document.getElementById('preview');
+		const canvas = document.createElement('canvas');
+		canvas.width = imgWidth;
+		canvas.height = imgHeight;
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(image,0,0,imgWidth,imgHeight);
 
-		const img = document.getElementById('preview');
-		const reader = new FileReader();
-		const imgReader = new Image();
-		const imgWidth = 300;
+		//画像処理 pixelデータの取得
+		var srcData = ctx.getImageData(0, 0, imgWidth, imgHeight);
+		var dstData = ctx.createImageData(imgWidth, imgHeight);
+		var src = srcData.data;
+		var dst = dstData.data;
 
-		reader.onloadend = () => {
-			imgReader.onload = () => {
-				//文字列の切り出し
-				const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
-				const imgHeight = Math.round(imgReader.height * (imgWidth / imgReader.width));//画像の高さを計算
-				const canvas = document.createElement('canvas');
-				canvas.width = imgWidth;
-				canvas.height = imgHeight;
-				const ctx = canvas.getContext('2d');
-				ctx.drawImage(imgReader,0,0,imgWidth,imgHeight);
+		const pixel_data = getPixelData(src, dst, imgWidth, imgHeight);
+		ctx.putImageData(dstData, 0, 0);
+		productTileImage(imgWidth, imgHeight, pixel_data);
 
-				//画像処理
-				var srcData = ctx.getImageData(0, 0, imgWidth, imgHeight);
-				var dstData = ctx.createImageData(imgWidth, imgHeight);
-				var src = srcData.data;
-				var dst = dstData.data;
+		// ボタンの表示
+		const copyButton = document.getElementById("copy");
 				
-				const pixel_data = getPixelData(src, dst, imgWidth, imgHeight);
-				ctx.putImageData(dstData, 0, 0);
-				
-				img.src = canvas.toDataURL(imgType);
-				productTileImage(imgWidth, imgHeight, pixel_data);
-			}
-			imgReader.src = reader.result;
+		if(copyButton.style.display!="block"){
+			copyButton.style.display = "block";
 		}
-		reader.readAsDataURL(obj.files[0]);
 	}
 
 	static copyProgram()
