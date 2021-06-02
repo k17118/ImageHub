@@ -7,11 +7,13 @@
 </form>
 
 <!-- 画像の表示（初期値はblank） -->
-<img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+<img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br>
 <script src="static/js/view-controller.js"></script>
 
+<!-- <button type="button" id="change" display="none" onclick="CodeToImage.showTileText()">変換</button> -->
+<a href="#" id="change" display="none" onclick="CodeToImage.showTileText()">Change!</a>
 <div id="tile-image">
     <p id="tile" class="px"></p>
 </div>
-<button type="button" id="button" onclick="CodeToImage.copyProgram()">コピー</button>
+<a href="#" id="copy" display="none" onclick="CodeToImage.copyProgram()">Copy</a>
 {% endblock %}
