@@ -22,6 +22,29 @@
     vertical-align:top;
 }
 
-#button{
-    margin-top: 0px;
+a{
+    text-decoration: none;
+    background-color:cadetblue;
+    color: azure;
+    font-size: 20px;
+    font-family: 'Bitter',serif;
+    width: 130px;
+    text-align: center;
+    line-height: 50px;/*ボタンの高さ*/
+    border-radius: 5px;/*角を丸く*/
+    border: 3px solid cadetblue;
+}
+
+a:hover{
+    text-decoration: none;
+    background-color: azure;
+    color: cadetblue;
+}
+
+#change{
+    display: none;
+}
+
+#copy{
+    display: none;
 }
