@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #cccccc;
+    font-size: 15px;
+    line-height: 2;
+}
+
+/* 自動マージンを解除してスタイリングしやすく */
+p, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 90px;
+    line-height: 1;
+    color: #ffffff;
+    font-family: 'Bitter', serif;
+    margin-bottom: 50px;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+.global-nav {
+    float: right;
+    margin-top: 60px;
+}
+
+.global-nav li {
+    float: left;
+    margin: 0 20px;
+    font-size: 20px;
+    list-style: none;
+    font-family: 'Bitter', serif;
+}
+
+.global-nav>li>a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.global-nav>li>a:visited {
+    color: #ffffff;
+}
+
+.global-nav>li>a:hover {
+    color: #788d98;
+    transition: 0.5s;
+    /* border-bottom: 2px solid #ffffff; */
+}
+
+header {
+    width: 960px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+#wrap {
+    clear: both;
+}
+
+.content {
+    width: 960px;
+    margin: 150px auto;
+    text-align: center;
+}
+
+.title{
+    text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000,
+                -0.5px 0.5px 0 #000, 0.5px -0.5px 0 #000,
+                0px 0.5px 0 #000,  0 -0.5px 0 #000,
+                -0.5px 0 0 #000, 0.5px 0 0 #000;
+}
+
+.explanation{
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.sign-in a{
+    text-decoration: none;
+    background-color:cadetblue;
+    color: azure;
+    font-size: 20px;
+    font-family: 'Bitter',serif;
+    width: 180px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 50px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 3px solid cadetblue;
+}
+
+.sign-in a:hover {
+    text-decoration: none;
+    background-color: #ffffff;
+    transition: 0.5s;
+    color: cadetblue;
+}
+
+#index {
+    background-image: url(images/top-page/image1.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#cover {
+    background-color: rgba(0,0,0,0.4);/*網がけ*/
+    height: 100vh;
+}
+
+footer {
+    text-align: center;
+    color: #000000;
+    padding: 20px 0;
+}
+
+footer small {
+    font-size: 12px;
+}
