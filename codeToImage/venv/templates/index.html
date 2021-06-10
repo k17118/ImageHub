@@ -1,6 +1,8 @@
+<!--画像変換ページ-->
 {% extends "layout.html" %}
 {% block content %}
 
+<!--画像選択-->
 <p>画像を選択してください．</p>
 <form>
     <input type="file" accept="image/*" onchange="CodeToImage.previewImage(this)">
@@ -9,10 +11,28 @@
 <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br>
 <script src="static/js/view-controller.js"></script>
 
+<!--ソースコードファイル選択-->
+<p id="srccode" display="none">ソースコードのファイルを選択してください</p>
+<form>
+    <input id="insrccode" display="none" type="file" accept=".c, .cpp" onchange="CodeToImage.previewCode(this)">
+</form>
+<!--ソースコードの表示（初期値はblank・確認用） -->
+<!--textarea id="preview-srccode" src=""><br-->
+
+
 <!-- <button type="button" id="change" display="none" onclick="CodeToImage.showTileText()">変換</button> -->
+
+<!--"change"ボタン-->
 <a href="#" id="change" display="none" onclick="CodeToImage.showTileText()">Change!</a>
+
+<!--文字変換結果の出力-->
 <div id="tile-image">
     <p id="tile" class="px"></p>
 </div>
+
+<!--"copy"出力コードコピーボタン(Text)-->
 <a href="#" id="copy" display="none" onclick="CodeToImage.copyProgram()">Copy</a>
+
+<!--"code"確認ボタン-->
+<!--a href="#" id="code" display="none" onclick="CodeToImage.copyProgram()">Code</a-->
 {% endblock %}
