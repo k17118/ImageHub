@@ -1,8 +1,8 @@
-const imgWidth = 300;
+const imgWidth = 90;
 var imgHeight = 0;
 
 class CodeToImage{
-	
+
 	static previewImage(obj)
 	{
 
@@ -20,22 +20,45 @@ class CodeToImage{
 				canvas.height = imgHeight;
 				const ctx = canvas.getContext('2d');
 				ctx.drawImage(imgReader,0,0,imgWidth,imgHeight);
-				
+
 				img.src = canvas.toDataURL(imgType);
 
-				// ボタンの表示
-				const changeButton = document.getElementById("change");
-				const copyButton = document.getElementById("copy");
-				
-				if(changeButton.style.display!="block"){
-					changeButton.style.display = "block";
-					copyButton.style.display = "none";
+				//ソースコード読み込みボタンの表示
+				const srccode = document.getElementById("srccode");
+				const insrccode = document.getElementById("insrccode");
+				if(srccode.style.display!="block"){
+					srccode.style.display = "block";
+					insrccode.style.display = "block";
 				}
-				
 			}
 			imgReader.src = reader.result;
 		}
 		reader.readAsDataURL(obj.files[0]);
+	}
+
+	//ソースコード取得用
+	static previewCode(obj)
+	{
+		const reader = new FileReader();
+		const codeReader = new File();
+
+		//ソースコードの表示(確認用)
+		//code.src = canvas.toDataURL();
+
+		reader.onloadend = () => {
+			codeReader.onload = () => {
+				//変換・コピーボタンの表示
+				const changeButton = document.getElementById("change");
+				//const copyButton = document.getElementById("copy");
+
+				if(changeButton.style.display!="block"){
+					changeButton.style.display = "block";
+					//copyButton.style.display = "none";
+				}
+			}
+			//codeReader.src = reader.result;
+		}
+		//reader.readAsDataURL(obj.files[0]);
 	}
 
 	static showTileText(){
@@ -55,7 +78,7 @@ class CodeToImage{
 			let imageSize = height * 2.5;
 			//コンテンツの幅を指定（これがないと下の余白がバグ）
 			document.getElementById('tile-image').style.height = `${imageSize}px`;
-			
+
 		}
 
 		function getPixelData(src, dst, width, height) {
@@ -74,7 +97,7 @@ class CodeToImage{
 			console.log(height)
 			return (pixel_data);
 		};
-		
+
 		const image = document.getElementById('preview');
 		const canvas = document.createElement('canvas');
 		canvas.width = imgWidth;
@@ -94,7 +117,7 @@ class CodeToImage{
 
 		// ボタンの表示
 		const copyButton = document.getElementById("copy");
-				
+
 		if(copyButton.style.display!="block"){
 			copyButton.style.display = "block";
 		}
@@ -108,12 +131,12 @@ class CodeToImage{
 		var copyFrom = document.createElement("textarea");
 		// テキストエリアへ値をセット
 		copyFrom.textContent = programText;
-		
+
 		// bodyタグの要素を取得
 		var bodyElm = document.getElementsByTagName("body")[0];
 		// 子要素にテキストエリアを配置
 		bodyElm.appendChild(copyFrom);
-		
+
 		// テキストエリアの値を選択
 		copyFrom.select();
 		// コピーコマンド発行
