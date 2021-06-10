@@ -6,11 +6,11 @@
     padding:0; */
     line-height: 16px;/*行間*/
     white-space: nowrap;
-    -webkit-transform:scale(0.15);
-    -moz-transform:scale(0.15);
-    -ms-transform:scale(0.15);
-    -o-transform:scale(0.15);
-    transform:scale(0.15);
+    -webkit-transform:scale(0.6);
+    -moz-transform:scale(0.6);
+    -ms-transform:scale(0.6);
+    -o-transform:scale(0.6);
+    transform:scale(0.6);
     font-weight: 800;
     /* 余白を潰す処理 */
     /* http://cqcq.sblo.jp/article/179242853.html */
@@ -39,6 +39,16 @@ a:hover{
     text-decoration: none;
     background-color: azure;
     color: cadetblue;
+}
+
+/*ソースコードを選んでくださいの文章*/
+#srccode{
+    display: none;
+}
+
+/*ソースコード入力フォーム*/
+#insrccode{
+    display: none;
 }
 
 #change{
