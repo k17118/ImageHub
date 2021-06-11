@@ -24,11 +24,11 @@ class CodeToImage{
 				img.src = canvas.toDataURL(imgType);
 
 				//ソースコード読み込みボタンの表示
-				const srccode = document.getElementById("srccode");
-				const insrccode = document.getElementById("insrccode");
-				if(srccode.style.display!="block"){
-					srccode.style.display = "block";
-					insrccode.style.display = "block";
+				const srcCode = document.getElementById("src-code");
+				const inSrcCode = document.getElementById("code");
+				if(srcCode.style.display!="block"){
+					srcCode.style.display = "block";
+					inSrcCode.style.display = "block";
 				}
 			}
 			imgReader.src = reader.result;
@@ -39,26 +39,21 @@ class CodeToImage{
 	//ソースコード取得用
 	static previewCode(obj)
 	{
-		const reader = new FileReader();
-		const codeReader = new File();
+		const inputCode = document.getElementById('code');// 要素を取得
+		var file = inputCode.files[0];//ファイル読み込み(1番目のファイル)
 
-		//ソースコードの表示(確認用)
-		//code.src = canvas.toDataURL();
+		// FileReaderを生成
+		var reader = new FileReader();
 
-		reader.onloadend = () => {
-			codeReader.onload = () => {
-				//変換・コピーボタンの表示
-				const changeButton = document.getElementById("change");
-				//const copyButton = document.getElementById("copy");
-
-				if(changeButton.style.display!="block"){
-					changeButton.style.display = "block";
-					//copyButton.style.display = "none";
-				}
-			}
-			//codeReader.src = reader.result;
+		// 読み込み完了時
+		reader.onload = () => {
+			var codeText = reader.result;
+			codeText = codeText.replace(/\r?\n/g,"○");//改行を置換
+			codeText = codeText.replace(/ /g,"□");//空白を置換
+			console.log(codeText);
 		}
-		//reader.readAsDataURL(obj.files[0]);
+
+		reader.readAsText(file);//ファイル読み込み
 	}
 
 	static showTileText(){
