@@ -12,9 +12,9 @@
 <script src="static/js/view-controller.js"></script>
 
 <!--ソースコードファイル選択-->
-<p id="srccode" display="none">ソースコードのファイルを選択してください</p>
+<p id="src-code" display="none">ソースコードのファイルを選択してください</p>
 <form>
-    <input id="insrccode" display="none" type="file" accept=".c, .cpp" onchange="CodeToImage.previewCode(this)">
+    <input type="file" id="code" display="none" accept=".c, .cpp" onchange="CodeToImage.previewCode(this)">
 </form>
 <!--ソースコードの表示（初期値はblank・確認用） -->
 <!--textarea id="preview-srccode" src=""><br-->
