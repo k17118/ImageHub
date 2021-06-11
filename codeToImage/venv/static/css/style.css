@@ -42,12 +42,12 @@ a:hover{
 }
 
 /*ソースコードを選んでくださいの文章*/
-#srccode{
+#src-code{
     display: none;
 }
 
 /*ソースコード入力フォーム*/
-#insrccode{
+#code{
     display: none;
 }
 
