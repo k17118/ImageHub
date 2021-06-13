@@ -12,6 +12,7 @@
     -o-transform:scale(0.6);
     transform:scale(0.6);
     font-weight: 800;
+    letter-spacing: -0.10em; /*文字間隔*/
     /* 余白を潰す処理 */
     /* http://cqcq.sblo.jp/article/179242853.html */
     -moz-transform-origin: 0px 0px;
