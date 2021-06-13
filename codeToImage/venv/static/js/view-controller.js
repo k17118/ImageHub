@@ -1,5 +1,6 @@
 const imgWidth = 90;
 var imgHeight = 0;
+var codeArray = {};//ソースコード格納用配列
 
 class CodeToImage{
 
@@ -50,7 +51,19 @@ class CodeToImage{
 			var codeText = reader.result;
 			codeText = codeText.replace(/\r?\n/g,"○");//改行を置換
 			codeText = codeText.replace(/ /g,"□");//空白を置換
-			console.log(codeText);
+			//console.log(codeText);
+
+			//グローバル変数codeArray配列に置換結果を格納
+			codeArray =  Array.from(codeText);
+			//console.log(codeArray);
+
+			//変換及びコピーボタンの表示
+			const changeButton = document.getElementById("change");
+			const copyButton = document.getElementById("copy");
+			if(changeButton.style.display!="block"){
+				changeButton.style.display = "block";
+				copyButton.style.display = "block";
+			}
 		}
 
 		reader.readAsText(file);//ファイル読み込み
@@ -59,13 +72,29 @@ class CodeToImage{
 	static showTileText(){
 		function productTileImage(width, height, pixel_data) {
 			var tileString = "";
+			var codeCount = 0; //コード配列カウント用配列
 			const tileElement = document.querySelector('#tile');
 			for (let h=0; h<height; h++){
 				for (let w=0; w<width; w++){
+
 					let color = pixel_data[w + h*width];
 					let r = color[0], g = color[1], b = color[2];
-					tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + "あ" + "</span>";
+					if(codeArray[codeCount]==undefined){//ソースコードの長さが足りない時，別の文字で埋める
+						tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + "あ" + "</span>";
+					}else{
+						//半角全角チェック
+						if(codeArray[codeCount].match(/[ -~]/) ) {//半角のとき
+							//[ -~] 半角スペース「 」からチルダ「~」までを指定すると、その中に半角英数字および半角記号も含まれることになる
+							tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
+							codeCount ++;//文字列カウントを増加させて二文字描画
+							tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
+						}else{//全角のとき
+							tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
+						}
+					}
+					console.log(codeArray[codeCount]);
 					// console.log(color);
+					codeCount ++;//文字列カウント
 				}
 				tileString += "<br/>"
 			}
