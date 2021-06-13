@@ -1,10 +1,12 @@
 .px {
     /* https://on-ze.com/demo/css3-small-font/ */
-    text-align: center;
-    /* font-size: 10px; */
-    /* margin:0;
-    padding:0; */
-    line-height: 16px;/*行間*/
+
+    /* fontによって文字サイズがある */
+    /* https://teratail.com/questions/180060 */
+    font-family: "メイリオ";
+    font-feature-settings: "fwid";
+    
+    line-height: 10px;/*行間*/
     white-space: nowrap;
     -webkit-transform:scale(0.6);
     -moz-transform:scale(0.6);
@@ -12,7 +14,7 @@
     -o-transform:scale(0.6);
     transform:scale(0.6);
     font-weight: 800;
-    letter-spacing: -0.10em; /*文字間隔*/
+    letter-spacing: -0.30em; /*文字間隔*/
     /* 余白を潰す処理 */
     /* http://cqcq.sblo.jp/article/179242853.html */
     -moz-transform-origin: 0px 0px;
