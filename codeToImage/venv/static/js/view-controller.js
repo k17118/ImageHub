@@ -73,24 +73,26 @@ class CodeToImage{
 		function productTileImage(width, height, pixel_data) {
 			var tileString = "";
 			var codeCount = 0; //コード配列カウント用配列
+
 			const tileElement = document.querySelector('#tile');
 			for (let h=0; h<height; h++){
 				for (let w=0; w<width; w++){
 
 					let color = pixel_data[w + h*width];
 					let r = color[0], g = color[1], b = color[2];
-					if(codeArray[codeCount]==undefined){//ソースコードの長さが足りない時，別の文字で埋める
+					if(codeArray[codeCount] == undefined){//ソースコードの長さが足りない時，別の文字で埋める
 						tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + "あ" + "</span>";
 					}else{
 						//半角全角チェック
-						if(codeArray[codeCount].match(/[ -~]/) ) {//半角のとき
-							//[ -~] 半角スペース「 」からチルダ「~」までを指定すると、その中に半角英数字および半角記号も含まれることになる
-							tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
-							codeCount ++;//文字列カウントを増加させて二文字描画
-							tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
-						}else{//全角のとき
-							tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
-						}
+						tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
+						// if(codeArray[codeCount].match(/[ -~]/) ) {//半角のとき
+						// 	//[ -~] 半角スペース「 」からチルダ「~」までを指定すると、その中に半角英数字および半角記号も含まれることになる
+						// 	tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
+						// 	codeCount ++;//文字列カウントを増加させて二文字描画
+						// 	tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
+						// }else{//全角のとき
+						// 	tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
+						// }
 					}
 					console.log(codeArray[codeCount]);
 					// console.log(color);
