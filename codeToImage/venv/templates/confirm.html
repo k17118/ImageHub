@@ -1,4 +1,26 @@
 {% extends "layout.html" %}
 {% block content %}
-<p>遷移先の画面です．</p>
+
+<div id="tile-image">
+    <p id="tile" class="cpx">
+        {% for h in range(height|int) %}
+            {% for w in range(width|int) %}
+                {% set color = pixel_data[w|int + h|int * width|int]%}
+                {% set code  = code_text[w|int + h|int * width|int]%}
+                <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{code}}</span>
+            {% endfor %}
+            <br>
+        {% endfor %}
+    </p>
+</div>
+
+<form action="/Regist" id="conf" method="POST">
+    <p>タイトル:<input type="text" class="title" name="name"></p>
+    <a href="javascript:conf.submit()" id="regist" display="block">Regist</a>
+</form>
+
+<script>
+    let imageSize = {{height|int}} * 8.0;
+    document.getElementById('tile-image').style.height = `${imageSize}px`;
+</script>
 {% endblock %}
