@@ -1,11 +1,15 @@
 import datetime
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, g
 from flask_sqlalchemy import SQLAlchemy
 
 from py_method import method
 
 # instance
 app = Flask(__name__)
+
+code_data = None
+color_data = None
+
 #データベースの種類とファイル名を指定
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///work.db'
 #ここは基本無効
@@ -31,18 +35,35 @@ def regist():
 
 @app.route("/Confirm", methods=["POST"])
 def regist_confirmation():
-    code_width = request.form['image-w'] 
-    code_height = request.form['image-h'] 
-    code_text = request.form['image-code'] 
-    code_color = request.form['image-color'] 
+    code_width = request.form['image-w'] #タイル幅
+    code_height = request.form['image-h'] #タイル高さ
+    code_text = request.form['image-code'] #プログラム
+    code_color = request.form['image-color'] #色情報
     
-    code_text = method.splitCodeText(code_text)
-    code_color = method.splitColorText(code_color)
+    global code_data; global color_data
+    code_data = code_text #保存
+    color_data = code_color #保存
     
-    print(code_text)
+    code_list = method.splitCodeText(code_text)
+    color_list = method.splitColorText(code_color)
+    
     return render_template("confirm.html", width=code_width, height=code_height, \
-        code_text=code_text, pixel_data=code_color)
+        code_text=code_list, pixel_data=color_list)
 
+@app.route("/Regist", methods=["POST"])
+def regist_data():
+    title = request.form['name']
+    regist_db = ProductDB()#クラスをインスタンス化
+    regist_db.user_name = 'guest'
+    regist_db.code = code_data
+    regist_db.color = color_data
+    regist_db.title = title
+    
+    db.session.add(regist_db)#regist_dbをセッションに追加(この時点ではデータベースに追加されていない)
+    db.session.commit()#データベースに登録
+    return render_template("registed.html")
+    
+    
 @app.route("/top")
 def top():
     return render_template("top.html")
