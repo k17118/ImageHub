@@ -9,7 +9,6 @@
 </form>
 <!-- 画像の表示（初期値はblank） -->
 <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br>
-<script src="static/js/view-controller.js"></script>
 
 <!--ソースコードファイル選択-->
 <p id="src-code" display="none">ソースコードのファイルを選択してください</p>
@@ -39,6 +38,7 @@
     <a href="javascript:conf.submit()" id="copy" display="none" onclick="CodeToImage.copyProgram()">Copy</a>
 </form>
 
+<script src="static/js/view-controller.js"></script>
 <!--"code"確認ボタン-->
 <!--a href="#" id="code" display="none" onclick="CodeToImage.copyProgram()">Code</a-->
 {% endblock %}
