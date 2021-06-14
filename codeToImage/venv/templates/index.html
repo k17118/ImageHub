@@ -31,7 +31,13 @@
 </div>
 
 <!--"copy"出力コードコピーボタン(Text)-->
-<a href="#" id="copy" display="none" onclick="CodeToImage.copyProgram()">Copy</a>
+<form action="/Confirm" id="conf" method="POST">
+    <input type="hidden" id="image-w" name="image-w">
+    <input type="hidden" id="image-h" name="image-h">
+    <input type="hidden" id="image-code" name="image-code">
+    <input type="hidden" id="image-color" name="image-color">
+    <a href="javascript:conf.submit()" id="copy" display="none" onclick="CodeToImage.copyProgram()">Copy</a>
+</form>
 
 <!--"code"確認ボタン-->
 <!--a href="#" id="code" display="none" onclick="CodeToImage.copyProgram()">Code</a-->
