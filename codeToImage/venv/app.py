@@ -1,11 +1,14 @@
 import datetime
-from flask import Flask, render_template, request, redirect, session, url_for, g
+from flask import Flask, render_template, request, redirect, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 from py_method import method
 
 # instance
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'secret_key'
+
 
 code_data = None
 color_data = None
@@ -33,22 +36,53 @@ class ProductDB(db.Model):
 def regist():
     return render_template("index.html")
 
+@app.route("/confirm")
+def confirm():
+    if 'token' in session:
+        width = session['width']
+        height = session['height']
+        
+        #文字列をリストに分割
+        code_list  = method.splitCodeText(code_data)
+        color_list = method.splitColorText(color_data)
+        
+        #セッションを破棄
+        session.pop('token')
+        
+        return render_template("confirm.html", width=width, height=height, \
+            code_text=code_list, pixel_data=color_list)
+    else:
+        return redirect(url_for('regist'))
+
+@app.route("/registed")
+def registed():
+    if 'token' in session:
+        #セッションを破棄
+        session.pop('token')
+        
+        return render_template("registed.html")
+    else:
+        return redirect(url_for('regist'))
+    
+
 @app.route("/Confirm", methods=["POST"])
 def regist_confirmation():
-    code_width = request.form['image-w'] #タイル幅
+    code_width  = request.form['image-w'] #タイル幅
     code_height = request.form['image-h'] #タイル高さ
-    code_text = request.form['image-code'] #プログラム
-    code_color = request.form['image-color'] #色情報
+    code_text   = request.form['image-code'] #プログラム
+    code_color  = request.form['image-color'] #色情報
     
+    #保存用にグローバルデータとして保存
     global code_data; global color_data
     code_data = code_text #保存
     color_data = code_color #保存
     
-    code_list = method.splitCodeText(code_text)
-    color_list = method.splitColorText(code_color)
+    #セッションで配置
+    session['width'] = code_width
+    session['height'] = code_height
+    session['token'] = 'token'
     
-    return render_template("confirm.html", width=code_width, height=code_height, \
-        code_text=code_list, pixel_data=color_list)
+    return redirect(url_for('confirm'))
 
 @app.route("/Regist", methods=["POST"])
 def regist_data():
@@ -59,9 +93,11 @@ def regist_data():
     regist_db.color = color_data
     regist_db.title = title
     
+    session['token'] = 'token'
+    
     db.session.add(regist_db)#regist_dbをセッションに追加(この時点ではデータベースに追加されていない)
     db.session.commit()#データベースに登録
-    return render_template("registed.html")
+    return redirect(url_for('registed'))
     
     
 @app.route("/top")
