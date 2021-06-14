@@ -49,8 +49,8 @@ class CodeToImage{
 		// 読み込み完了時
 		reader.onload = () => {
 			var codeText = reader.result;
-			codeText = codeText.replace(/\r?\n/g,"○");//改行を置換
-			codeText = codeText.replace(/ /g,"□");//空白を置換
+			codeText = codeText.replace(/\r?\n/g,"△");//改行を置換
+			codeText = codeText.replace(/ /g,"×");//空白を置換
 			//console.log(codeText);
 
 			//グローバル変数codeArray配列に置換結果を格納
@@ -85,23 +85,14 @@ class CodeToImage{
 					}else{
 						//半角全角チェック
 						tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
-						// if(codeArray[codeCount].match(/[ -~]/) ) {//半角のとき
-						// 	//[ -~] 半角スペース「 」からチルダ「~」までを指定すると、その中に半角英数字および半角記号も含まれることになる
-						// 	tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
-						// 	codeCount ++;//文字列カウントを増加させて二文字描画
-						// 	tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
-						// }else{//全角のとき
-						// 	tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
-						// }
 					}
-					console.log(codeArray[codeCount]);
-					// console.log(color);
 					codeCount ++;//文字列カウント
 				}
 				tileString += "<br/>"
 			}
 			tileElement.innerHTML = tileString;
-			let imageSize = height * 2.5;
+			//最終ボタンの位置を調整
+			let imageSize = height * 8.0;
 			//コンテンツの幅を指定（これがないと下の余白がバグ）
 			document.getElementById('tile-image').style.height = `${imageSize}px`;
 
@@ -147,6 +138,12 @@ class CodeToImage{
 		if(copyButton.style.display!="block"){
 			copyButton.style.display = "block";
 		}
+
+		//POST用に値をセッティング
+		document.getElementById('image-w').value = imgWidth;
+		document.getElementById('image-h').value = imgHeight;
+		document.getElementById('image-code').value = codeArray;
+		document.getElementById('image-color').value = pixel_data;
 	}
 
 	static copyProgram()
