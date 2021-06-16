@@ -1,5 +1,6 @@
-from re import split
 import numpy as np
+import random, string
+from re import split
 
 def splitColorText(color_str):
     color_list = color_str.split(',')#カンマで分割
@@ -17,3 +18,10 @@ def splitCodeText(code_str):
         if i%2 == 0:
             str_list.append(code_str[i])
     return str_list
+
+def productRandomText(width, height):
+    length = int(width)*int(height)
+    # 画素数分のrandomリストを作成
+    randlst = [random.choice(string.ascii_letters + string.digits) for i in range(length)]
+    return randlst
+    
