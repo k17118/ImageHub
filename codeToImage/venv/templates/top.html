@@ -11,9 +11,23 @@
     </header>
     <div id="wrap">
         <div class="content">
-            <h1 class="title">ImageHub</h1>
-            <p class="explanation">Save the program as a photo!</p>
-            <p class="sign-in"><a href="">My page</a></p>
+            <div id="title" class="title">
+                <ul>
+                    <li><h1 id="text_I">I</h1></li>
+                    <li><h1 id="text_m">m</h1></li>
+                    <li><h1 id="text_a">a</h1></li>
+                    <li><h1 id="text_g">g</h1></li>
+                    <li><h1 id="text_e">e</h1></li>
+                    <li><h1 id="text_H">H</h1></li>
+                    <li><h1 id="text_u">u</h1></li>
+                    <li><h1 id="text_b">b</h1></li>
+                </ul>
+            </div>
+            <p id="explanation" class="explanation">Save the program as a photo!</p>
+            <p id="view" class="view"><a href="">View</a></p>
+            <form action="/goRegist" id="conf" method="POST">
+                <p id="regist" class="regist"><a href="javascript:conf.submit()">Regist</a></p>
+            </form>
         </div>
     </div>
     <footer>
@@ -21,4 +35,115 @@
     </footer>
 </div>
 
+<script src="static/js/jquery.bgswitcher.js"></script>
+<script>
+    var counter = 0;
+    var time_margin = 50;
+    var text1 = document.getElementById("text_I");
+    var text2 = document.getElementById("text_m");
+    var text3 = document.getElementById("text_a");
+    var text4 = document.getElementById("text_g");
+    var text5 = document.getElementById("text_e");
+    var text6 = document.getElementById("text_H");
+    var text7 = document.getElementById("text_u");
+    var text8 = document.getElementById("text_b");
+
+    //ランダム表示用アルファベット
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+                    "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B",
+                    "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
+                    "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    
+    const countUp = () => {
+        var text1_num = Math.floor(Math.random()*(alphabet.length));
+        var text2_num = Math.floor(Math.random()*(alphabet.length));
+        var text3_num = Math.floor(Math.random()*(alphabet.length));
+        var text4_num = Math.floor(Math.random()*(alphabet.length));
+        var text5_num = Math.floor(Math.random()*(alphabet.length));
+        var text6_num = Math.floor(Math.random()*(alphabet.length));
+        var text7_num = Math.floor(Math.random()*(alphabet.length));
+        var text8_num = Math.floor(Math.random()*(alphabet.length));
+
+        counter++;//カウント
+        var id = setTimeout(countUp, 10);
+
+        //counterを参照して文字を切り替え
+        if(counter < time_margin){
+            text1.innerHTML = alphabet[text1_num]; text2.innerHTML = alphabet[text2_num]; text3.innerHTML = alphabet[text3_num]; 
+            text4.innerHTML = alphabet[text4_num]; text5.innerHTML = alphabet[text5_num]; text6.innerHTML = alphabet[text6_num]; 
+            text7.innerHTML = alphabet[text7_num]; text8.innerHTML = alphabet[text8_num];  
+        }else if(counter >= time_margin && counter < time_margin*2){
+            text1.innerHTML = "I"; text2.innerHTML = alphabet[text2_num]; text3.innerHTML = alphabet[text3_num]; 
+            text4.innerHTML = alphabet[text4_num]; text5.innerHTML = alphabet[text5_num]; text6.innerHTML = alphabet[text6_num]; 
+            text7.innerHTML = alphabet[text7_num]; text8.innerHTML = alphabet[text8_num];
+        }else if(counter >= time_margin*2 && counter < time_margin*3){
+            text1.innerHTML = "I"; text2.innerHTML = "m"; text3.innerHTML = alphabet[text3_num]; 
+            text4.innerHTML = alphabet[text4_num]; text5.innerHTML = alphabet[text5_num]; text6.innerHTML = alphabet[text6_num]; 
+            text7.innerHTML = alphabet[text7_num]; text8.innerHTML = alphabet[text8_num];
+        }else if(counter >= time_margin*3 && counter < time_margin*4){
+            text1.innerHTML = "I"; text2.innerHTML = "m"; text3.innerHTML = "a"; 
+            text4.innerHTML = alphabet[text4_num]; text5.innerHTML = alphabet[text5_num]; text6.innerHTML = alphabet[text6_num]; 
+            text7.innerHTML = alphabet[text7_num]; text8.innerHTML = alphabet[text8_num];
+        }else if(counter >= time_margin*4 && counter < time_margin*5){
+            text1.innerHTML = "I"; text2.innerHTML = "m"; text3.innerHTML = "a"; 
+            text4.innerHTML = "g"; text5.innerHTML = alphabet[text5_num]; text6.innerHTML = alphabet[text6_num]; 
+            text7.innerHTML = alphabet[text7_num]; text8.innerHTML = alphabet[text8_num];
+        }else if(counter >= time_margin*5 && counter < time_margin*6){
+            text1.innerHTML = "I"; text2.innerHTML = "m"; text3.innerHTML = "a"; 
+            text4.innerHTML = "g"; text5.innerHTML = "e"; text6.innerHTML = alphabet[text6_num]; 
+            text7.innerHTML = alphabet[text7_num]; text8.innerHTML = alphabet[text8_num];
+        }else if(counter >= time_margin*5 && counter < time_margin*6){
+            text1.innerHTML = "I"; text2.innerHTML = "m"; text3.innerHTML = "a"; 
+            text4.innerHTML = "g"; text5.innerHTML = "e"; text6.innerHTML = "H"; 
+            text7.innerHTML = alphabet[text7_num]; text8.innerHTML = alphabet[text8_num];
+        }else if(counter >= time_margin*6 && counter < time_margin*7){
+            text1.innerHTML = "I"; text2.innerHTML = "m"; text3.innerHTML = "a"; 
+            text4.innerHTML = "g"; text5.innerHTML = "e"; text6.innerHTML = "H"; 
+            text7.innerHTML = "u"; text8.innerHTML = alphabet[text8_num];
+        }else if(counter >= time_margin*7 && counter < time_margin*8){
+            text1.innerHTML = "I"; text2.innerHTML = "m"; text3.innerHTML = "a"; 
+            text4.innerHTML = "g"; text5.innerHTML = "e"; text6.innerHTML = "H"; 
+            text7.innerHTML = "u"; text8.innerHTML = "b";
+        }else if(counter >= time_margin*8 && counter < time_margin*9){
+
+            //文字・ボタンの表示
+            var obj1 = document.getElementById("explanation");
+            obj1.animate([{opacity: '0'}, {opacity: '1'}], 
+                        {duration: 1000, fill: 'forwards'});
+            var obj2 = document.getElementById("view");
+            obj2.animate([{opacity: '0'}, {opacity: '1'}], 
+                        {duration: 1000, fill: 'forwards'});
+            var obj3 = document.getElementById("regist");
+            obj3.animate([{opacity: '0'}, {opacity: '1'}], 
+                        {duration: 1000, fill: 'forwards'});
+
+        }else if(counter >= time_margin*9){
+            //背景画像の切り替え
+            const img_path = "static/css/images/top-page/";
+            jQuery(function($) {
+                $('.bg-switcher').bgSwitcher({
+                    images:[`${img_path}1.jpg`, `${img_path}2.jpg`, `${img_path}3.jpg`,
+                            `${img_path}4.jpg`, `${img_path}5.jpg`, `${img_path}6.jpg`,
+                            `${img_path}7.jpg`, `${img_path}8.jpg`, `${img_path}9.jpg`, `${img_path}10.jpg`],  // 切り替え画像
+                    Interval: 4000, //切り替えの間隔 1000=1秒
+                    start: true, //$.fn.bgswitcher(config)をコールした時に切り替えを開始する
+                    loop: true, //切り替えをループする
+                    shuffle: false, //背景画像の順番をシャッフルする
+                    effect: "fade", //エフェクトの種類 "fade" "blind" "clip" "slide" "drop" "hide"
+                    duration: 1000, //エフェクトの時間 1000=1秒
+                    easing: "swing", //エフェクトのイージング "swing" "linear"
+                });
+            });
+
+        }
+        
+        //ループ処理の終了条件
+        if(counter > time_margin*10){
+            clearTimeout(id);
+        }
+    }
+
+    countUp();
+
+</script>
 {% endblock %}
