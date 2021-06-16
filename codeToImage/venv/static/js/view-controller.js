@@ -58,10 +58,8 @@ class CodeToImage{
 
 			//変換及びコピーボタンの表示
 			const changeButton = document.getElementById("change");
-			const copyButton = document.getElementById("copy");
 			if(changeButton.style.display!="block"){
 				changeButton.style.display = "block";
-				copyButton.style.display = "block";
 			}
 		}
 
@@ -74,7 +72,7 @@ class CodeToImage{
 			var codeCount = 0; //コード配列カウント用配列
 
 			const tileElement = document.querySelector('#tile');
-			
+
 			var alphabet = "abcdefghijklmnopqrstuvwxyz0123456789+-*";//文字数不足補間用
 			var al = alphabet.length;
 
