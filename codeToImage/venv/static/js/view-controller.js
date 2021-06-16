@@ -51,7 +51,6 @@ class CodeToImage{
 			var codeText = reader.result;
 			codeText = codeText.replace(/\r?\n/g,"△");//改行を置換
 			codeText = codeText.replace(/ /g,"×");//空白を置換
-			//console.log(codeText);
 
 			//グローバル変数codeArray配列に置換結果を格納
 			codeArray =  Array.from(codeText);
@@ -75,21 +74,26 @@ class CodeToImage{
 			var codeCount = 0; //コード配列カウント用配列
 
 			const tileElement = document.querySelector('#tile');
+			
+			var alphabet = "abcdefghijklmnopqrstuvwxyz0123456789+-*";//文字数不足補間用
+			var al = alphabet.length;
+
 			for (let h=0; h<height; h++){
 				for (let w=0; w<width; w++){
 
 					let color = pixel_data[w + h*width];
 					let r = color[0], g = color[1], b = color[2];
 					if(codeArray[codeCount] == undefined){//ソースコードの長さが足りない時，別の文字で埋める
-						tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + "あ" + "</span>";
+						var support_ch = alphabet[Math.floor(Math.random()*al)];
+						tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + support_ch + "</span>";
 					}else{
-						//半角全角チェック
 						tileString += `<span style=\"color:rgb(${r}, ${g}, ${b})\">` + codeArray[codeCount] + "</span>";
 					}
-					codeCount ++;//文字列カウント
+					codeCount++;//文字列カウント
 				}
 				tileString += "<br/>"
 			}
+
 			tileElement.innerHTML = tileString;
 			//最終ボタンの位置を調整
 			let imageSize = height * 8.0;
