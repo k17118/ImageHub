@@ -52,7 +52,7 @@ def confirm():
         random_list = method.productRandomText(width, height)
         
         #セッションを破棄
-        session.pop('token')
+        # session.pop('token')
         
         return render_template("confirm.html", width=width, height=height, \
             code_text=code_list, pixel_data=color_list, random_text=random_list)
