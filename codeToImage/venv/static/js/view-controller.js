@@ -1,4 +1,4 @@
-const imgWidth = 90;
+const imgWidth = 250;
 var imgHeight = 0;
 var codeArray = {};//ソースコード格納用配列
 
@@ -96,7 +96,7 @@ class CodeToImage{
 
 			tileElement.innerHTML = tileString;
 			//最終ボタンの位置を調整
-			let imageSize = height * 8.0;
+			let imageSize = height * 5.0;
 			//コンテンツの幅を指定（これがないと下の余白がバグ）
 			document.getElementById('tile-image').style.height = `${imageSize}px`;
 
