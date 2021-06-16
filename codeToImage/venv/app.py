@@ -33,6 +33,10 @@ class ProductDB(db.Model):
     updated_at = db.Column(db.String(100), default=datetime.datetime.now, onupdate=datetime.datetime.now)
     
 @app.route("/")#url
+def top():
+    return render_template("top.html")
+
+@app.route("/regist")
 def regist():
     return render_template("index.html")
 
@@ -65,7 +69,10 @@ def registed():
     else:
         return redirect(url_for('regist'))
     
-
+@app.route("/goRegist", methods=["POST"])
+def go_to_regist_view():
+    return redirect(url_for('regist'))
+    
 @app.route("/Confirm", methods=["POST"])
 def regist_confirmation():
     code_width  = request.form['image-w'] #タイル幅
@@ -99,11 +106,6 @@ def regist_data():
     db.session.add(regist_db)#regist_dbをセッションに追加(この時点ではデータベースに追加されていない)
     db.session.commit()#データベースに登録
     return redirect(url_for('registed'))
-    
-    
-@app.route("/top")
-def top():
-    return render_template("top.html")
 
 if __name__ == '__main__':
     db.create_all()#データベースの作成
