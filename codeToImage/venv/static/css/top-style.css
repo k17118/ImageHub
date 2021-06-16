@@ -67,7 +67,7 @@ header {
 
 .content {
     width: 960px;
-    margin: 150px auto;
+    margin: 130px auto;
     text-align: center;
 }
 
@@ -85,11 +85,23 @@ header {
     opacity: 0;
 }
 
-.view{
+.top-button{
     opacity: 0;
 }
 
-.view a{
+.c-button{
+    display: inline-flex;
+}
+
+#view {
+    margin-right: 15px;
+}
+
+#regist {
+    margin-left: 15px;
+}
+
+.top-button a{
     text-decoration: none;
     background-color:cadetblue;
     color: azure;
@@ -105,52 +117,33 @@ header {
     border: 3px solid cadetblue;
 }
 
-.view a:hover {
+.top-button a:hover{
     text-decoration: none;
     background-color: #ffffff;
     transition: 0.5s;
     color: cadetblue;
 }
 
-.regist{
-    opacity: 0;
-}
-
-.regist a{
-    text-decoration: none;
-    background-color:cadetblue;
-    color: azure;
-    font-size: 20px;
-    font-family: 'Bitter',serif;
-    width: 180px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 50px;
-    margin-top: 20px;
-    border-radius: 5px;
-    border: 3px solid cadetblue;
-}
-
-.regist a:hover {
-    text-decoration: none;
-    background-color: #ffffff;
-    transition: 0.5s;
-    color: cadetblue;
-}
-
-#index {
+#index{
     background-image: url(images/top-page/1.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
-}
+} 
+
+/* .bg-switcher{
+    background-image: url(images/top-page/1.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+} */
 
 
 #cover {
     background-color: rgba(0,0,0,0.4);/*網がけ*/
-    height: 100vh;
+    background-size: cover;
 }
 
 footer {
