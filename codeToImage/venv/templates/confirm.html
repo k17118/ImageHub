@@ -7,7 +7,12 @@
             {% for w in range(width|int) %}
                 {% set color = pixel_data[w|int + h|int * width|int]%}
                 {% set code  = code_text[w|int + h|int * width|int]%}
-                <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{code}}</span>
+                {% set sup = random_text[w|int + h|int * width|int]%}
+                {% if code|length != 0 %}
+                    <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{code}}</span>
+                {% elif code|length == 0 %}
+                    <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{sup}}</span>
+                {% endif %}
             {% endfor %}
             <br>
         {% endfor %}
@@ -20,7 +25,7 @@
 </form>
 
 <script>
-    let imageSize = {{height|int}} * 8.0;
+    let imageSize = {{height|int}} * 3.0;
     document.getElementById('tile-image').style.height = `${imageSize}px`;
 </script>
 {% endblock %}
