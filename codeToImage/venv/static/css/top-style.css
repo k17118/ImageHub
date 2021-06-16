@@ -15,7 +15,10 @@ h1 {
     font-size: 90px;
     line-height: 1;
     color: #ffffff;
-    font-family: 'Bitter', serif;
+    /* font-family: 'Bitter', serif; */
+    font-family: "メイリオ", serif;
+    font-feature-settings: "fwid";
+    font-weight: bold;
     margin-bottom: 50px;
 }
 
@@ -68,19 +71,25 @@ header {
     text-align: center;
 }
 
-.title{
-    text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000,
-                -0.5px 0.5px 0 #000, 0.5px -0.5px 0 #000,
-                0px 0.5px 0 #000,  0 -0.5px 0 #000,
-                -0.5px 0 0 #000, 0.5px 0 0 #000;
+.title>ul{
+    text-align: center;
+}
+
+.title>ul>li{
+    display: inline-block;
 }
 
 .explanation{
     font-size: 25px;
     color: #ffffff;
+    opacity: 0;
 }
 
-.sign-in a{
+.view{
+    opacity: 0;
+}
+
+.view a{
     text-decoration: none;
     background-color:cadetblue;
     color: azure;
@@ -96,7 +105,34 @@ header {
     border: 3px solid cadetblue;
 }
 
-.sign-in a:hover {
+.view a:hover {
+    text-decoration: none;
+    background-color: #ffffff;
+    transition: 0.5s;
+    color: cadetblue;
+}
+
+.regist{
+    opacity: 0;
+}
+
+.regist a{
+    text-decoration: none;
+    background-color:cadetblue;
+    color: azure;
+    font-size: 20px;
+    font-family: 'Bitter',serif;
+    width: 180px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 50px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 3px solid cadetblue;
+}
+
+.regist a:hover {
     text-decoration: none;
     background-color: #ffffff;
     transition: 0.5s;
@@ -104,12 +140,13 @@ header {
 }
 
 #index {
-    background-image: url(images/top-page/image1.jpg);
+    background-image: url(images/top-page/1.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
 }
+
 
 #cover {
     background-color: rgba(0,0,0,0.4);/*網がけ*/
