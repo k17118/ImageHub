@@ -45,12 +45,13 @@ def confirm():
         #文字列をリストに分割
         code_list  = method.splitCodeText(code_data)
         color_list = method.splitColorText(color_data)
+        random_list = method.productRandomText(width, height)
         
         #セッションを破棄
         session.pop('token')
         
         return render_template("confirm.html", width=width, height=height, \
-            code_text=code_list, pixel_data=color_list)
+            code_text=code_list, pixel_data=color_list, random_text=random_list)
     else:
         return redirect(url_for('regist'))
 
