@@ -1,29 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<div id="tile-image">
-    <p id="tile" class="cpx">
-        {% for h in range(height|int) %}
-            {% for w in range(width|int) %}
-                {% set color = pixel_data[w|int + h|int * width|int]%}
-                {% set code  = code_text[w|int + h|int * width|int]%}
-                {% set sup = random_text[w|int + h|int * width|int]%}
-                {% if code|length != 0 %}
-                    <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{code}}</span>
-                {% elif code|length == 0 %}
-                    <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{sup}}</span>
-                {% endif %}
+<div class="container">
+    <div id="tile-image">
+        <p id="tile" class="cpx">
+            {% for h in range(height|int) %}
+                {% for w in range(width|int) %}
+                    {% set color = pixel_data[w|int + h|int * width|int]%}
+                    {% set code  = code_text[w|int + h|int * width|int]%}
+                    {% set sup = random_text[w|int + h|int * width|int]%}
+                    {% if code|length != 0 %}
+                        <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{code}}</span>
+                    {% elif code|length == 0 %}
+                        <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{sup}}</span>
+                    {% endif %}
+                {% endfor %}
+                <br>
             {% endfor %}
-            <br>
-        {% endfor %}
-    </p>
+        </p>
+    </div>
+    <form action="/Regist" id="conf" method="POST">
+        <p class="lead">タイトル:<input type="text" class="form-control w-50" name="name" placeholder="タイトルを入力"></p>
+        <a href="javascript:conf.submit()" id="regist" display="block">Regist</a>
+    </form>
 </div>
-
-<form action="/Regist" id="conf" method="POST">
-    <p>タイトル:<input type="text" class="title" name="name"></p>
-    <a href="javascript:conf.submit()" id="regist" display="block">Regist</a>
-</form>
-
 <script>
     let imageSize = {{height|int}} * 4.0;
     document.getElementById('tile-image').style.height = `${imageSize}px`;
