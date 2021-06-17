@@ -126,30 +126,29 @@ header {
 
 #index{
     background-image: url(images/top-page/1.jpg);
+    width: 100vw;
+    height: 100vh;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 } 
 
-/* .bg-switcher{
-    background-image: url(images/top-page/1.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-} */
-
-
 #cover {
-    background-color: rgba(0,0,0,0.4);/*網がけ*/
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
     background-size: cover;
 }
 
 footer {
     text-align: center;
     color: #000000;
-    padding: 20px 0;
+    padding: 10px 0;
+    margin-top: -30px;
 }
 
 footer small {
