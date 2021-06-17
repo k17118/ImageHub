@@ -94,7 +94,7 @@ class CodeToImage{
 
 			tileElement.innerHTML = tileString;
 			//最終ボタンの位置を調整
-			let imageSize = height * 5.0;
+			let imageSize = height * 4.0;
 			//コンテンツの幅を指定（これがないと下の余白がバグ）
 			document.getElementById('tile-image').style.height = `${imageSize}px`;
 
