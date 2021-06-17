@@ -1,44 +1,58 @@
 <!--画像変換ページ-->
 {% extends "layout.html" %}
 {% block content %}
+<!--描画位置を端から右に-->
+<div class="container">
+    <div class="p-3 mb-2 bg-light text-dark">
+        <div class="page-header" id="banner">
+            <div class="row my-2">
+                <div class="col-12">
+                    <h1 class="display-3">CODE TO IMAGE</h1>
+                    <p class="lead">あなたのソースコードからオリジナルの画像がつくれます.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--画像選択-->
+    <div class="border-bottom" style="padding:10px;">
+        <p class="lead">①Imageを選択してください</p>
+        <form>
+            <input type="file" accept="image/*" onchange="CodeToImage.previewImage(this)">
+        </form>
+        <!-- 画像の表示（初期値はblank） -->
+        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br>
+    </div>
+    <!--ソースコードファイル選択-->
+    <p class="lead" id="src-code" display="none">②ソースコードのファイルを選択してください</p>
+    <form>
+        <input type="file" id="code" display="none" accept=".c, .cpp" onchange="CodeToImage.previewCode(this)">
+    </form>
 
-<!--画像選択-->
-<p>画像を選択してください．</p>
-<form>
-    <input type="file" accept="image/*" onchange="CodeToImage.previewImage(this)">
-</form>
-<!-- 画像の表示（初期値はblank） -->
-<img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br>
 
-<!--ソースコードファイル選択-->
-<p id="src-code" display="none">ソースコードのファイルを選択してください</p>
-<form>
-    <input type="file" id="code" display="none" accept=".c, .cpp" onchange="CodeToImage.previewCode(this)">
-</form>
-<!--ソースコードの表示（初期値はblank・確認用） -->
-<!--textarea id="preview-srccode" src=""><br-->
-
-
-<!-- <button type="button" id="change" display="none" onclick="CodeToImage.showTileText()">変換</button> -->
-
-<!--"change"ボタン-->
-<a href="#" id="change" display="none" onclick="CodeToImage.showTileText()">Change!</a>
-
-<!--文字変換結果の出力-->
-<div id="tile-image">
-    <p id="tile" class="px"></p>
+    <!--"change"ボタン-->
+    <div class="w-25" style="padding:20px;">
+        <div class="bs-component">
+            <a class="btn btn-info" href="#" id="change" display="none" onclick="CodeToImage.showTileText()">Change!</a>
+        </div>
+    </div>
+        <!--文字変換結果の出力-->
+        <div id="tile-image">
+            <p id="tile" class="px"></p>
+        </div>
+    <!--"copy"出力コードコピーボタン(Text)-->
+    <form action="/Confirm" id="conf" method="POST">
+        <input type="hidden" id="image-w" name="image-w">
+        <input type="hidden" id="image-h" name="image-h">
+        <input type="hidden" id="image-code" name="image-code">
+        <input type="hidden" id="image-color" name="image-color">
+        <div class="w-25"  style="padding:20px;">
+            <div class="bs-component">
+                <a href="javascript:conf.submit()" id="copy" display="none" onclick="CodeToImage.copyProgram()" class="btn btn-success">Save</a>
+            </div>
+        </div>
+    </form>
+    <!--container-->
 </div>
 
-<!--"copy"出力コードコピーボタン(Text)-->
-<form action="/Confirm" id="conf" method="POST">
-    <input type="hidden" id="image-w" name="image-w">
-    <input type="hidden" id="image-h" name="image-h">
-    <input type="hidden" id="image-code" name="image-code">
-    <input type="hidden" id="image-color" name="image-color">
-    <a href="javascript:conf.submit()" id="copy" display="none" onclick="CodeToImage.copyProgram()">Copy</a>
-</form>
-
 <script src="static/js/view-controller.js"></script>
-<!--"code"確認ボタン-->
-<!--a href="#" id="code" display="none" onclick="CodeToImage.copyProgram()">Code</a-->
 {% endblock %}
