@@ -2,6 +2,10 @@ import datetime
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 
+import base64
+from io import BytesIO
+from PIL import Image
+
 from py_method import method
 
 # instance
@@ -94,6 +98,11 @@ def regist_confirmation():
 
 @app.route("/Regist", methods=["POST"])
 def regist_data():
+    enc_data = request.form['picture']
+    dec_data = base64.b64decode(enc_data.split(',')[1])
+    dec_img = Image.open(BytesIO(dec_data))
+    dec_img.save('static/test.png')
+    
     title = request.form['name']
     regist_db = ProductDB()#クラスをインスタンス化
     regist_db.user_name = 'guest'
