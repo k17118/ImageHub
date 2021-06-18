@@ -32,13 +32,28 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
 <script>
 
+    let heightSize = {{height|int}} * 8.0;
+    let widthSize = {{width|int}} * 8.0;
+    var imageLength = 0;
+
     function productTileImage(){
-        html2canvas(document.querySelector('#tile-image')).then((canvas) => {
+
+            html2canvas(document.querySelector('#tile-image'),{
+            // キャプチャ幅を変更する
+            width: widthSize*1.5,
+            // html2canvas のウィンドウ幅を変更する
+            windowWidth: widthSize*1.5,
+            // キャプチャ長さを変更する
+            height: heightSize*1.5
+
+        }).then((canvas) => {
             
             //アンカータグを作成
             var a = document.createElement('a');
             //canvasをJPEGに変換
             var base64 = canvas.toDataURL('image/png');
+
+            imageLength = base64.length;//中身の長さを取得
 
             console.log(base64);
             //POST用に値をセッティング
@@ -46,10 +61,20 @@
         })
     }
 
+    //逐次処理で画像の読み込みを監視
+    let count = 0;
+    const countUp = () => {
+        console.log(imageLength);
+        const timeoutId = setTimeout(countUp, 1000);
+        if(imageLength != 0){　
+            clearTimeout(timeoutId);　//timeoutIdをclearTimeoutで指定している
+            console.log('読み込み完了');
+        }
+    }
+    countUp();
+
     window.onload = productTileImage;
-    
-    let heightSize = {{height|int}} * 8.0;
-    let widthSize = {{width|int}} * 8.0;
+
     document.getElementById('tile-image').style.height = `${heightSize}px`;
     document.getElementById('tile-image').style.width = `${widthSize}px`;
 
