@@ -110,14 +110,15 @@ def regist_data():
     dec_data = base64.b64decode(enc_data.split(',')[1])
     dec_img = Image.open(BytesIO(dec_data))
     
-    #画像にエンコード(入力画像)
-    dec_input = base64.b64decode(base64_input.split(',')[1])
-    input_img = Image.open(BytesIO(dec_input))
-    
     # tileの保存
     image_name = method.getImageName()#保存用の名前を生成
     path_name = 'static/tile_img/' + title + '_' + image_name + '.png'
+    dec_img = method.cutSpace(dec_img)#余白の削除
     dec_img.save(path_name)#画像の書き出し
+    
+    #画像にエンコード(入力画像)
+    dec_input = base64.b64decode(base64_input.split(',')[1])
+    input_img = Image.open(BytesIO(dec_input))
     
     # 入力画像の保存
     path_name = 'static/img/' + title + '_' + image_name + '.png'
