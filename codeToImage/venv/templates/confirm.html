@@ -19,8 +19,10 @@
         </p>
     </div>
     <form action="/Regist" id="conf" method="POST">
-        <p class="lead">タイトル:<input type="text" class="form-control w-50" name="name" placeholder="タイトルを入力"></p>
-        <a href="javascript:conf.submit()" id="regist" display="block">Regist</a>
+        <p class="lead">タイトル:<input type="text" required="required" class="form-control w-50" name="name" placeholder="タイトルを入力"></p>
+        <div class="bs-component">
+            <a href="javascript:conf.submit()" class="btn btn-success"　id="regist" display="block">Regist</a>
+        </div>
     </form>
 </div>
 <script>
