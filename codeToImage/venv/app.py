@@ -33,6 +33,7 @@ class ProductDB(db.Model):
     code = db.Column(db.String(720000), nullable=False)
     color = db.Column(db.String(1440000), nullable=False)
     title = db.Column(db.String(128), nullable=False)
+    path = db.Column(db.String(128), nullable=False)
     created_at = db.Column(db.String(100), default=datetime.datetime.now)
     updated_at = db.Column(db.String(100), default=datetime.datetime.now, onupdate=datetime.datetime.now)
     
@@ -102,6 +103,8 @@ def regist_data():
     dec_data = base64.b64decode(enc_data.split(',')[1])
     dec_img = Image.open(BytesIO(dec_data))
     dec_img.save('static/test.png')
+    path_name = "ooooo"
+    
     
     title = request.form['name']
     regist_db = ProductDB()#クラスをインスタンス化
