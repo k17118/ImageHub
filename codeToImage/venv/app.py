@@ -16,6 +16,7 @@ app.config['SECRET_KEY'] = 'secret_key'
 
 code_data = None
 color_data = None
+base64_input = None
 
 #データベースの種類とファイル名を指定
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///work.db'
@@ -84,11 +85,13 @@ def regist_confirmation():
     code_height = request.form['image-h'] #タイル高さ
     code_text   = request.form['image-code'] #プログラム
     code_color  = request.form['image-color'] #色情報
+    input_image = request.form['input'] #入力画像
     
     #保存用にグローバルデータとして保存
-    global code_data; global color_data
+    global code_data; global color_data; global base64_input;
     code_data = code_text #保存
     color_data = code_color #保存
+    base64_input = input_image
     
     #セッションで配置
     session['width'] = code_width
@@ -102,15 +105,23 @@ def regist_data():
     
     title = request.form['name']
     
-    #画像にエンコード
+    #画像にエンコード(tile画像)
     enc_data = request.form['picture']
     dec_data = base64.b64decode(enc_data.split(',')[1])
     dec_img = Image.open(BytesIO(dec_data))
     
-    image_name = method.getImageName()#保存用の名前を生成
-    path_name = 'static/' + title + '_' + image_name + '.png'
+    #画像にエンコード(入力画像)
+    dec_input = base64.b64decode(base64_input.split(',')[1])
+    input_img = Image.open(BytesIO(dec_input))
     
+    # tileの保存
+    image_name = method.getImageName()#保存用の名前を生成
+    path_name = 'static/tile_img/' + title + '_' + image_name + '.png'
     dec_img.save(path_name)#画像の書き出し
+    
+    # 入力画像の保存
+    path_name = 'static/img/' + title + '_' + image_name + '.png'
+    input_img.save(path_name)#画像の書き出し
     
     regist_db = ProductDB()#クラスをインスタンス化
     regist_db.user_name = 'guest'
