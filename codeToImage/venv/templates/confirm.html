@@ -32,7 +32,7 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
 <script>
 
-    function buttonClick(){
+    function productTileImage(){
         html2canvas(document.querySelector('#tile-image')).then((canvas) => {
             
             //アンカータグを作成
@@ -46,7 +46,7 @@
         })
     }
 
-    window.onload = buttonClick;
+    window.onload = productTileImage;
     
     let heightSize = {{height|int}} * 8.0;
     let widthSize = {{width|int}} * 8.0;
