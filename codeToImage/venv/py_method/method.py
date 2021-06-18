@@ -1,3 +1,4 @@
+import datetime
 import numpy as np
 import random, string
 from re import split
@@ -24,4 +25,14 @@ def productRandomText(width, height):
     # 画素数分のrandomリストを作成
     randlst = [random.choice(string.ascii_letters + string.digits) for i in range(length)]
     return randlst
+
+def getImageName():
+    time_str = []
+    dt_now = datetime.datetime.now()#現在の時間を取得
+    time_data = str(dt_now)#文字列に変換
     
+    day_str = time_data[:10]#日付
+    time_str = time_data[11:19]#時間
+    image_name = day_str + time_str
+    
+    return (image_name)
