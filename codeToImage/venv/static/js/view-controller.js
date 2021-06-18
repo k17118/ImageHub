@@ -32,7 +32,9 @@ class CodeToImage{
 					inSrcCode.style.display = "block";
 				}
 			}
-			imgReader.src = reader.result;
+			imgReader.src = reader.result;//base64に変換
+			//POST用に値をセッティング
+			document.getElementById('input').value = imgReader.src;
 		}
 		reader.readAsDataURL(obj.files[0]);
 	}
