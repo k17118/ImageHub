@@ -36,11 +36,11 @@
     
     line-height: 13px;/*行間*/
     white-space: nowrap;
-    -webkit-transform:scale(0.3);
-    -moz-transform:scale(0.3);
-    -ms-transform:scale(0.3);
-    -o-transform:scale(0.3);
-    transform:scale(0.3);
+    -webkit-transform:scale(0.6);
+    -moz-transform:scale(0.6);
+    -ms-transform:scale(0.6);
+    -o-transform:scale(0.6);
+    transform:scale(0.6);
     font-weight: 900;
     letter-spacing: -0.60em; /*文字間隔*/
 
