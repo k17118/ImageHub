@@ -1,4 +1,4 @@
-const imgWidth = 250;
+const imgWidth = 200;
 var imgHeight = 0;
 var codeArray = {};//ソースコード格納用配列
 
