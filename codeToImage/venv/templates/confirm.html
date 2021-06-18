@@ -2,31 +2,56 @@
 {% block content %}
 <div class="container">
     <div id="tile-image">
-        <p id="tile" class="cpx">
-            {% for h in range(height|int) %}
-                {% for w in range(width|int) %}
-                    {% set color = pixel_data[w|int + h|int * width|int]%}
-                    {% set code  = code_text[w|int + h|int * width|int]%}
-                    {% set sup = random_text[w|int + h|int * width|int]%}
-                    {% if code|length != 0 %}
-                        <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{code}}</span>
-                    {% elif code|length == 0 %}
-                        <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{sup}}</span>
-                    {% endif %}
+            <p id="tile" class="cpx">
+                {% for h in range(height|int) %}
+                    {% for w in range(width|int) %}
+                        {% set color = pixel_data[w|int + h|int * width|int]%}
+                        {% set code  = code_text[w|int + h|int * width|int]%}
+                        {% set sup = random_text[w|int + h|int * width|int]%}
+                        {% if code|length != 0 %}
+                            <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{code}}</span>
+                        {% elif code|length == 0 %}
+                            <span style="color:rgb({{color[0]}}, {{color[1]}}, {{color[2]}});">{{sup}}</span>
+                        {% endif %}
+                    {% endfor %}
+                    <br>
                 {% endfor %}
-                <br>
-            {% endfor %}
-        </p>
+            </p>
     </div>
+
     <form action="/Regist" id="conf" method="POST">
         <p class="lead">タイトル:<input type="text" required="required" class="form-control w-50" name="name" placeholder="タイトルを入力"></p>
+        <input type="hidden" id="picture" name="picture">
         <div class="bs-component">
             <a href="javascript:conf.submit()" class="btn btn-success"　id="regist" display="block">Regist</a>
         </div>
     </form>
+
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
 <script>
-    let imageSize = {{height|int}} * 4.0;
-    document.getElementById('tile-image').style.height = `${imageSize}px`;
+
+    function buttonClick(){
+        html2canvas(document.querySelector('#tile-image')).then((canvas) => {
+            
+            //アンカータグを作成
+            var a = document.createElement('a');
+            //canvasをJPEGに変換
+            var base64 = canvas.toDataURL('image/png');
+
+            console.log(base64);
+            //POST用に値をセッティング
+            document.getElementById('picture').value = base64;
+        })
+    }
+
+    window.onload = buttonClick;
+    
+    let heightSize = {{height|int}} * 8.0;
+    let widthSize = {{width|int}} * 8.0;
+    document.getElementById('tile-image').style.height = `${heightSize}px`;
+    document.getElementById('tile-image').style.width = `${widthSize}px`;
+
 </script>
 {% endblock %}
