@@ -57,29 +57,28 @@ def cutSpace(pil_img):
         if left == None and cv2.countNonZero(roi_image) != height:
             left = i-1
             continue
-        
         if left != None and cv2.countNonZero(roi_image) == height:
             right = i
             break
-    
     # エラー処理
-    if left == None:
+    if left == None or left < 0:
         left = 0
     if right == None:
         right = width
-    
-    
     top = None; bottom = None;
     for i in range(height-1):
         roi_image = new_bin[i:i+1, 0:width]#幅1で切り出し
         if top == None and cv2.countNonZero(roi_image) != width:
             top = i-1
             continue
-        
         if top != None and cv2.countNonZero(roi_image) == width:
             bottom = i
             break
-    
+    # エラー処理
+    if top == None or top < 0:
+        top = 0
+    if bottom == None:
+        right = width
     crop_image = new_image[top:bottom, left:right]
     
     #opencv -> PIL
