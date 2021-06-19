@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="container">
-    <div id="tile-image">
+    <div id="tile-image" style="padding:10px;">
             <p id="tile" class="vpx">
                 {% for h in range(height|int) %}
                     {% for w in range(width|int) %}
@@ -19,10 +19,17 @@
                 {% endfor %}
             </p>
     </div>
-    <h2>{{img_title}}</h2>
-    <input type="button" onclick="location.href='img_download'" value="画像を保存">
-    <input type="button" onclick="location.href='text_download'" value="テキストをコピー">
-    
+    <div class="border-bottom" style="padding:10px;">
+        <h2 class="lead">{{img_title}}</h2>
+    </div>
+    <div class="border-bottom" style="padding:20px;">
+        <input type="button" class="btn btn-info" onclick="location.href='img_download'" value="画像を保存">
+        <input type="button" class="btn btn-info" onclick="location.href='text_download'" value="テキストをコピー">
+    </div>
+    <div class="bs-component" style="padding:20px;">
+        <a href="/view" class="btn btn-success">Galleryへ</a>
+    </div>
+</div>
     <script>
         let heightSize = {{height|int}} * 3.0;
         document.getElementById('tile-image').style.height = `${heightSize}px`;
