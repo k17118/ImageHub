@@ -1,5 +1,5 @@
 import datetime
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, make_response
 from flask_sqlalchemy import SQLAlchemy
 
 import base64
@@ -7,6 +7,8 @@ from io import BytesIO
 from PIL import Image
 
 from py_method import method
+
+import pyperclip
 
 # instance
 app = Flask(__name__)
@@ -188,6 +190,67 @@ def regist_data():
     db.session.add(regist_db)#regist_dbをセッションに追加(この時点ではデータベースに追加されていない)
     db.session.commit()#データベースに登録
     return redirect(url_for('registed'))
+    
+@app.route("/show-img", methods=["GET", "POST"])
+def Mypage():
+    usr_id = 1
+    # usr_id = session['id']
+    # session['id'] = usr_id
+    # moe_pics = ProductDB.query.all()
+    moe_pics = ProductDB.query.filter_by(id = int(usr_id)).all()
+    # moe_pics = ProductDB.query.get(usr_id)
+    width = 200
+
+    moe_pics[0].color = method.splitColorText(moe_pics[0].color)
+    moe_pics[0].code = method.splitCodeText(moe_pics[0].code)
+    height = (len(moe_pics[0].color) / width)
+    random_list = method.productRandomText(width, height)
+    print(moe_pics[0].title)
+
+    return render_template("show-img.html", width=width, height=height, img_title=moe_pics[0].title, \
+            code_text=moe_pics[0].code, pixel_data=moe_pics[0].color, random_text=random_list)
+
+@app.route("/img_download", methods=["GET", "POST"])
+def download_img():
+    usr_id = 1
+    # usr_id = session["id"]
+    XLSX_MIMETYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    moe_pic = ProductDB.query.filter_by(id = int(usr_id)).all()
+    img_path = moe_pic[0].path
+    img_title = moe_pic[0].title
+    response = make_response()
+    
+    # print(img_path)
+    response.data = open(img_path, "rb").read()
+
+    downloadFileName = img_title + '.png'
+    response.headers['Content-Disposition'] = 'attachment; filename=' + downloadFileName
+
+
+    response.mimetype = XLSX_MIMETYPE
+    return response
+
+@app.route("/text_download", methods=["GET", "POST"])
+def download_text():
+    usr_id = 1
+    # usr_id = session["id"]
+    moe_pic = ProductDB.query.filter_by(id = int(usr_id)).all()
+    img_code = moe_pic[0].code
+    img_code = method.splitCodeText(img_code)
+    raw_code = ''
+    for text in img_code:
+        if text == '×':
+            text = ' '
+        if text == '△':
+            text = '\n'
+        raw_code = raw_code + text
+
+
+    # print(str(raw_code))
+    pyperclip.copy(raw_code)
+    # download_test()
+    return ('', 204)
+
 
 if __name__ == '__main__':
     db.create_all()#データベースの作成
