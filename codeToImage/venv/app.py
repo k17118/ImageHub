@@ -80,11 +80,6 @@ def registed():
     
 @app.route("/view")
 def show():
-    # id
-    if 'id' in session:
-        print('id = ', session['id'])
-    else:
-        print('None')
         
     # 表示するページ番号の指定
     page_number = 0
@@ -119,91 +114,91 @@ def show():
 def page1():
     session['id'] = request.form['page1']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page2", methods=["POST"])
 def page2():
     session['id'] = request.form['page2']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page3", methods=["POST"])
 def page3():
     session['id'] = request.form['page3']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page4", methods=["POST"])
 def page4():
     session['id'] = request.form['page4']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page5", methods=["POST"])
 def page5():
     session['id'] = request.form['page5']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page6", methods=["POST"])
 def page6():
     session['id'] = request.form['page6']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page7", methods=["POST"])
 def page7():
     session['id'] = request.form['page7']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page8", methods=["POST"])
 def page8():
     session['id'] = request.form['page8']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page9", methods=["POST"])
 def page9():
     session['id'] = request.form['page9']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page10", methods=["POST"])
 def page10():
     session['id'] = request.form['page10']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page11", methods=["POST"])
 def page11():
     session['id'] = request.form['page11']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page12", methods=["POST"])
 def page12():
     session['id'] = request.form['page12']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page13", methods=["POST"])
 def page13():
     session['id'] = request.form['page13']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page14", methods=["POST"])
 def page14():
     session['id'] = request.form['page14']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 
 @app.route("/page15", methods=["POST"])
 def page15():
     session['id'] = request.form['page15']
     print(session['id'])
-    return redirect(url_for('show'))
+    return redirect(url_for('show_img'))
 # -----------------------------------------------
 
 
@@ -280,9 +275,15 @@ def regist_data():
     return redirect(url_for('registed'))
     
 @app.route("/show-img", methods=["GET", "POST"])
-def Mypage():
+def show_img():
     usr_id = 1
-    # usr_id = session['id']
+    # id
+    if 'id' in session:
+        session['id'] = session['id']
+        print('id = ', session['id'])
+    else:
+        print('None')
+    usr_id = session['id']
     # session['id'] = usr_id
     # moe_pics = ProductDB.query.all()
     moe_pics = ProductDB.query.filter_by(id = int(usr_id)).all()
@@ -300,8 +301,8 @@ def Mypage():
 
 @app.route("/img_download", methods=["GET", "POST"])
 def download_img():
-    usr_id = 1
-    # usr_id = session["id"]
+    # usr_id = 1
+    usr_id = session["id"]
     XLSX_MIMETYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     moe_pic = ProductDB.query.filter_by(id = int(usr_id)).all()
     img_path = moe_pic[0].path
@@ -320,7 +321,7 @@ def download_img():
 
 @app.route("/text_download", methods=["GET", "POST"])
 def download_text():
-    usr_id = 1
+    # usr_id = 1
     # usr_id = session["id"]
     moe_pic = ProductDB.query.filter_by(id = int(usr_id)).all()
     img_code = moe_pic[0].code
