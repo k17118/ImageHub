@@ -53,6 +53,7 @@
     transform-origin: 0px 0px;
     vertical-align:top;
 }
+
 .vpx {
     /* https://on-ze.com/demo/css3-small-font/ */
 
@@ -128,23 +129,31 @@
 
 .title {
     text-align: left;
-    font-size: 20px;
+    font-size: 17px;
     margin-top: 5px;
+    font-family: 'Noto Serif JP', serif;
+    font-family: 'Shippori Mincho', serif;
 }
 
-.sub-info p{
+.sub-info {
+    display: flex;
+    align-items: flex-start;
+    margin-top: -18px;
+}
+
+/* .sub-info > p {
     float: left;
     margin-top: -20px;
     text-align: left;
-    vertical-align: middle;
-}
+} */
 
 .date {
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: 100;
 }
 
 .author{
-    font-size: 16px;
+    font-size: 13px;
     margin-left: 5px;
 }
 
@@ -240,4 +249,4 @@
     z-index: -100;
     background: url('../css/images/load/keisuke.png') no-repeat;
     background-size: cover;
-   }
+    }
