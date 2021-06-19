@@ -53,6 +53,33 @@
     transform-origin: 0px 0px;
     vertical-align:top;
 }
+.vpx {
+    /* https://on-ze.com/demo/css3-small-font/ */
+
+    /* fontによって文字サイズがある */
+    /* https://teratail.com/questions/180060 */
+    font-family: "メイリオ";
+    font-feature-settings: "fwid";
+    
+    line-height: 10px;/*行間*/
+    white-space: nowrap;
+    -webkit-transform:scale(0.3);
+    -moz-transform:scale(0.3);
+    -ms-transform:scale(0.3);
+    -o-transform:scale(0.3);
+    transform:scale(0.3);
+    font-weight: 800;
+    letter-spacing: -0.70em; /*文字間隔*/
+
+    /* 余白を潰す処理 */
+    /* http://cqcq.sblo.jp/article/179242853.html */
+    -moz-transform-origin: 0px 0px;
+    -webkit-transform-origin: 0px 0px;
+    -o-transform-origin: 0px 0px;
+    -ms-transform-origin: 0px 0px;
+    transform-origin: 0px 0px;
+    vertical-align:top;
+}
 
 .main>h1 {
     font-family: 'Bitter', serif;
