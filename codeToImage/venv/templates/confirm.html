@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
+<!--roading中画面の生成-->
+<div id="loading">
+    <div class="loader">
+        <video src="../static/css/images/load/loading_keiskeF.mp4" poster="../static/css/images/load/keisuke.png" controls autoplay loop></video>
+    </div>
+</div>
 <div class="container">
     <div id="tile-image">
             <p id="tile" class="cpx">
@@ -63,12 +69,15 @@
 
     //逐次処理で画像の読み込みを監視
     let count = 0;
+    const loadingScene = document.getElementById('loading');
     const countUp = () => {
         console.log(imageLength);
         const timeoutId = setTimeout(countUp, 1000);
         if(imageLength != 0){　
             clearTimeout(timeoutId);　//timeoutIdをclearTimeoutで指定している
             console.log('読み込み完了');
+            loadingScene.classList.add('loaded');
+
         }
     }
     countUp();
