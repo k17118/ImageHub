@@ -78,11 +78,53 @@ def registed():
     
 @app.route("/view")
 def show():
-    print('Hi')
-    return render_template("viewer.html")
+    # id
+    if 'id' in session:
+        print('id = ', session['id'])
+    else:
+        print('None')
+        
+    # 表示するページ番号の指定
+    page_number = 0
+    if 'page_num' in session:
+        page_number = session['page_num']
+        session.pop('page_num')
+    else:
+        page_number = 1
+    page_number = int(page_number)
+    
+    print(page_number)
+    
+    data = ProductDB.query.all()
+    data_size = len(data)
+    
+    image_path = []# 画像のパスリスト
+    title_path = []# タイトルのリスト
+    time_list = []# 登録時刻
+    author_list = []# 著者のリスト
+    
+    for x in range(data_size-1, -1, -1):
+        image_path.append(data[x].thumbnail)
+        title_path.append(data[x].title)
+        time_list.append((data[x].created_at)[0:10])
+        author_list.append(data[x].user_name)
+    
+    return render_template("viewer.html", image_path=image_path, title_path=title_path, \
+                            time_list=time_list, author_list=author_list, page_number=page_number)
 
-@app.route("/testRedirect")
-def test():
+@app.route("/page1", methods=["POST"])
+def page1():
+    session['id'] = request.form['page1']
+    return redirect(url_for('show'))
+
+@app.route("/pageTransitionPrev", methods=["POST"])
+def transitionPrev():
+    session['page_num'] = request.form['page-num1']
+    return redirect(url_for('show'))
+
+@app.route("/pageTransitionNext", methods=["POST"])
+def transitionNext():
+    session['page_num'] = request.form['page-num2']
     return redirect(url_for('show'))
     
 @app.route("/goRegist", methods=["POST"])
