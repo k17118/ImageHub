@@ -114,10 +114,98 @@ def show():
     return render_template("viewer.html", image_path=image_path, title_path=title_path, \
                             time_list=time_list, author_list=author_list, page_number=page_number)
 
+# viewerページ遷移用関数---------------------------
 @app.route("/page1", methods=["POST"])
 def page1():
     session['id'] = request.form['page1']
+    print(session['id'])
     return redirect(url_for('show'))
+
+@app.route("/page2", methods=["POST"])
+def page2():
+    session['id'] = request.form['page2']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page3", methods=["POST"])
+def page3():
+    session['id'] = request.form['page3']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page4", methods=["POST"])
+def page4():
+    session['id'] = request.form['page4']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page5", methods=["POST"])
+def page5():
+    session['id'] = request.form['page5']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page6", methods=["POST"])
+def page6():
+    session['id'] = request.form['page6']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page7", methods=["POST"])
+def page7():
+    session['id'] = request.form['page7']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page8", methods=["POST"])
+def page8():
+    session['id'] = request.form['page8']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page9", methods=["POST"])
+def page9():
+    session['id'] = request.form['page9']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page10", methods=["POST"])
+def page10():
+    session['id'] = request.form['page10']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page11", methods=["POST"])
+def page11():
+    session['id'] = request.form['page11']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page12", methods=["POST"])
+def page12():
+    session['id'] = request.form['page12']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page13", methods=["POST"])
+def page13():
+    session['id'] = request.form['page13']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page14", methods=["POST"])
+def page14():
+    session['id'] = request.form['page14']
+    print(session['id'])
+    return redirect(url_for('show'))
+
+@app.route("/page15", methods=["POST"])
+def page15():
+    session['id'] = request.form['page15']
+    print(session['id'])
+    return redirect(url_for('show'))
+# -----------------------------------------------
+
 
 @app.route("/pageTransitionPrev", methods=["POST"])
 def transitionPrev():
