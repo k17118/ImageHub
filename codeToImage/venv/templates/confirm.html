@@ -6,7 +6,7 @@
         <video src="../static/css/images/load/loading_keiskeF.mp4" poster="../static/css/images/load/keisuke.png" controls autoplay loop></video>
     </div>
 </div>
-<div class="container">
+
     <div id="tile-image">
             <p id="tile" class="cpx">
                 {% for h in range(height|int) %}
@@ -24,7 +24,7 @@
                 {% endfor %}
             </p>
     </div>
-
+<div class="container">
     <form action="/Regist" id="conf" method="POST">
         <p class="lead">タイトル:<input type="text" required="required" class="form-control w-50" name="name" placeholder="タイトルを入力"></p>
         <input type="hidden" id="picture" name="picture">
