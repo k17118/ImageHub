@@ -67,8 +67,9 @@
     font-family: 'Bitter', serif;
 }
 
-#header-title {
-    font-family: 'Bitter', serif;
+#header-title > p{
+    float: right;
+    margin-top: 5px;
 }
 
 #header-item {
