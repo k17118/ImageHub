@@ -3,12 +3,13 @@
 <div id="photograph">
     <div id="wrap" class="clearfix">
         <div class=main>
-            <h1>Viewer</h1>
+            <h1>Gallery</h1>
             <ul class="photograph-list">
                 <li class="image1">
-                    <form name="form1" action="/view" id="conf">
-                        <a href="javascript:form1.submit()">
-                            <img src = "static/img/tino.png" class="button" alt="image1">
+                    <form name="form1" action="/page1" id="form1" method="POST">
+                        <input type="hidden" id="page1" name="page1" value="1">
+                        <a id="link1" href="javascript:form1.submit()">
+                            <img src = "static/img/tino.png" id="img1" class="button" alt="image1">
                         </a>
                     </form>
                     <p id="title1" class="title">aaaaa</p>
@@ -21,8 +22,8 @@
                 <li class="image2">
                     <form name="form2" action="/view" id="conf">
                         {# <input type="hidden" id="id" name="id"> #}
-                        <a href="javascript:form2.submit()">
-                            <img src = "static/img/lulouch.png" class="button" alt="image2">
+                        <a id="link2" href="javascript:form2.submit()">
+                            <img src = "static/img/lulouch.png" id="img2" class="button" alt="image2">
                         </a>
                     </form>
                     <p id="title2" class="title">aaaaa</p>
@@ -35,8 +36,8 @@
                 <li class="image3">
                     <form name="form3" action="/view" id="conf">
                         {# <input type="hidden" id="id" name="id"> #}
-                        <a href="javascript:form3.submit()">
-                            <img src = "static/img/tino.png" class="button" alt="image3">
+                        <a id="link3" href="javascript:form3.submit()">
+                            <img src = "static/img/tino.png" id="img3" class="button" alt="image3">
                         </a>
                     </form>
                     <p id="title3" class="title">aaaaa</p>
@@ -49,8 +50,8 @@
                 <li class="image4">
                     <form name="form4" action="/view" id="conf">
                         {# <input type="hidden" id="id" name="id"> #}
-                        <a href="javascript:form4.submit()">
-                            <img src = "static/img/lulouch.png" class="button" alt="image4">
+                        <a id="link4" href="javascript:form4.submit()">
+                            <img src = "static/img/lulouch.png" id="img4" class="button" alt="image4">
                         </a>
                     </form>
                     <p id="title4" class="title">aaaaa</p>
@@ -63,8 +64,8 @@
                 <li class="image5">
                     <form name="form5" action="/view" id="conf">
                         {# <input type="hidden" id="id" name="id"> #}
-                        <a href="javascript:form5.submit()">
-                            <img src = "static/img/tino.png" class="button" alt="image5">
+                        <a id="link5" href="javascript:form5.submit()">
+                            <img src = "static/img/tino.png" id="img5" class="button" alt="image5">
                         </a>
                     </form>
                     <p id="title5" class="title">aaaaa</p>
@@ -77,8 +78,8 @@
                 <li class="image6">
                     <form name="form6" action="/view" id="conf">
                         {# <input type="hidden" id="id" name="id"> #}
-                        <a href="javascript:form6.submit()">
-                            <img src = "static/img/lulouch.png" class="button" alt="image6">
+                        <a id="link6" href="javascript:form6.submit()">
+                            <img src = "static/img/lulouch.png" id="img6" class="button" alt="image6">
                         </a>
                     </form>
                     <p id="title6" class="title">aaaaa</p>
@@ -91,8 +92,8 @@
                 <li class="image7">
                     <form name="form7" action="/view" id="conf">
                         {# <input type="hidden" id="id" name="id"> #}
-                        <a href="javascript:form7.submit()">
-                            <img src = "static/img/tino.png" class="button" alt="image7">
+                        <a id="link7" href="javascript:form7.submit()">
+                            <img src = "static/img/tino.png" id="img7" class="button" alt="image7">
                         </a>
                     </form>
                     <p id="title7" class="title">aaaaa</p>
@@ -105,8 +106,8 @@
                 <li class="image8">
                     {# <input type="hidden" id="id" name="id"> #}
                     <form name="form8" action="/view" id="conf">
-                        <a href="javascript:form8.submit()">
-                            <img src = "static/img/lulouch.png" class="button" alt="image8">
+                        <a id="link8" href="javascript:form8.submit()">
+                            <img src = "static/img/lulouch.png" id="img8" class="button" alt="image8">
                         </a>
                     </form>
                     <p id="title8" class="title">aaaaa</p>
@@ -119,8 +120,8 @@
                 <li class="image9">
                     <form name="form9" action="/view" id="conf">
                         <input type="hidden" id="id" name="id">
-                        <a href="javascript:form9.submit()">
-                            <img src = "static/img/lulouch.png" class="button" alt="image9">
+                        <a id="link9" href="javascript:form9.submit()">
+                            <img src = "static/img/lulouch.png" id="img9" class="button" alt="image9">
                         </a>
                     </form>
                     <p id="title9" class="title">aaaaa</p>
@@ -133,8 +134,8 @@
                 <li class="image10">
                     <form name="form10" action="/view" id="conf">
                         <input type="hidden" id="id" name="id">
-                        <a href="javascript:form10.submit()">
-                            <img src = "static/img/tino.png" class="button" alt="image10">
+                        <a id="link10" href="javascript:form10.submit()">
+                            <img src = "static/img/tino.png" id="img10" class="button" alt="image10">
                         </a>
                     </form>
                     <p id="title10" class="title">aaaaa</p>
@@ -147,8 +148,8 @@
                 <li class="image11">
                     <form name="form11" action="/view" id="conf">
                         <input type="hidden" id="id" name="id">
-                        <a href="javascript:form11.submit()">
-                            <img src = "static/img/tino.png" class="button" alt="image11">
+                        <a id="link11" href="javascript:form11.submit()">
+                            <img src = "static/img/tino.png" id="img11" class="button" alt="image11">
                         </a>
                     </form>
                     <p id="title11" class="title">aaaaa</p>
@@ -161,8 +162,8 @@
                 <li class="image12">
                     <form name="form12" action="/view" id="conf">
                         <input type="hidden" id="id" name="id">
-                        <a href="javascript:form12.submit()">
-                            <img src = "static/img/tino.png" class="button" alt="image12">
+                        <a id="link12" href="javascript:form12.submit()">
+                            <img src = "static/img/tino.png" id="img12" class="button" alt="image12">
                         </a>
                     </form>
                     <p id="title12" class="title">aaaaa</p>
@@ -175,8 +176,8 @@
                 <li class="image13">
                     <form name="form13" action="/view" id="conf">
                     <input type="hidden" id="id" name="id">
-                        <a href="javascript:form13.submit()">
-                            <img src = "static/img/tino.png" class="button" alt="image13">
+                        <a id="link13" href="javascript:form13.submit()">
+                            <img src = "static/img/tino.png" id="img13" class="button" alt="image13">
                         </a>
                     </form>
                     <p id="title13" class="title">aaaaa</p>
@@ -189,8 +190,8 @@
                 <li class="image14">
                     <form name="form14" action="/view" id="conf">
                         <input type="hidden" id="id" name="id">
-                        <a href="javascript:form14.submit()">
-                            <img src = "static/img/noimage.png" class="button" alt="image14">
+                        <a id="link14" href="javascript:form14.submit()">
+                            <img src = "static/img/noimage.png" id="img14" class="button" alt="image14">
                         </a>
                     </form>
                     <p id="title14" class="title">aaaaa</p>
@@ -203,8 +204,8 @@
                 <li class="image15">
                     <form name="form15" action="/view" id="conf">
                         <input type="hidden" id="id" name="id">
-                        <a href="javascript:form15.submit()">
-                            <img src = "static/img/noimage.png" class="button" alt="image15">
+                        <a id="link15" href="javascript:form15.submit()">
+                            <img src = "static/img/noimage.png" id="img15" class="button" alt="image15">
                         </a>
                     </form>
                     <p id="title15" class="title">aaaaa</p>
@@ -220,38 +221,103 @@
 
 <div class="under-banner">
     <ul class="banner">
-        <li class="banner1">
+        <li id="prev-button">
             {# <input type="hidden" id="page" name="page"> #}
-            <form name="bar1" action="/view" id="conf">
-                <a href="javascript:bar1.submit()" class="ban"><p id="#page1">1</p></a>
+            <form name="prev" action="/pageTransitionPrev" id="prev" method="POST">
+                <input type="hidden" id="page-num1" name="page-num1">
+                <a href="javascript:prev.submit()" class="ban"><p id="#prev-str">PREV</p></a>
             </form>
         </li>
-        <li class="banner2">
+        <li id="next-button">
             {# <input type="hidden" id="page" name="page"> #}
-            <form name="bar2" action="/view" id="conf">
-                <a href="javascript:bar2.submit()" class="ban"><p id="#page2">2</p></a>
-            </form>
-        </li>
-        <li class="banner3">
-            {# <input type="hidden" id="page" name="page"> #}
-            <form name="bar3" action="/view" id="conf">
-                <a href="javascript:bar3.submit()" class="ban"><p id="#page3">3</p></a>
-            </form>
-        </li>
-        <li class="banner4">
-            {# <input type="hidden" id="page" name="page"> #}
-            <form name="bar4" action="/view" id="conf">
-                <a href="javascript:bar4.submit()" class="ban"><p id="#page4">4</p></a>
-            </form>
-        </li>
-        <li class="banner5">
-            {# <input type="hidden" id="page" name="page"> #}
-            <form name="bar5" action="/view" id="conf">
-                <a href="javascript:bar5.submit()" class="ban"><p id="#page5">5</p></a>
+            <form name="next" action="/pageTransitionNext" id="next" method="POST">
+                <input type="hidden" id="page-num2" name="page-num2">
+                <a href="javascript:next.submit()" class="ban"><p id="#next-str">NEXT</p></a>
             </form>
         </li>
     </ul>
 </div>
 <script>
+
+    let image_path = {{image_path | tojson}};
+    let title_path = {{title_path | tojson}};
+    let time_list = {{time_list | tojson}};
+    let author_list = {{author_list | tojson}};
+
+    var page_set_num = {{page_number|int}};
+    
+    //とりあえず1をセット
+    document.getElementById('page-num1').value = 1;
+    document.getElementById('page-num2').value = 1;
+
+    let page_start = (page_set_num-1)*15 + 1;// 掲載スタートindex
+    let page_end = page_set_num * 15;//掲載終わりindex
+
+    var prev_button_flag = false;
+    var next_button_flag = false;
+    console.log(page_start, page_end, image_path.length);
+
+    for (let i=page_start; i<=page_end; i++){
+        const num = i - ((page_set_num-1)*15);
+        if(i <= image_path.length){
+            
+            //画像
+            var focus_img = document.getElementById(`img${num}`);
+            focus_img.src = image_path[i-1];
+
+            //タイトル
+            var title = document.getElementById(`title${num}`);
+            title.innerHTML = title_path[i-1];
+
+            //時間
+            var time = document.getElementById(`date${num}`);
+            time.innerHTML = time_list[i-1];
+
+            //著者
+            var author = document.getElementById(`author${num}`);
+            author.innerHTML = author_list[i-1];
+
+            if(num == 1){
+                document.getElementById(`page${num}`).value = image_path.length + 1 - i;
+            }
+        }else{//空で埋める場合
+
+            var focus_img = document.getElementById(`img${num}`);
+            focus_img.src = "static/img/noimage.png";
+
+            var title = document.getElementById(`title${num}`);
+            title.innerHTML = "-----";
+
+            var time = document.getElementById(`date${num}`);
+            time.innerHTML = "-----";
+
+            var author = document.getElementById(`author${num}`);
+            author.innerHTML = "-----";
+
+            let link = document.getElementById(`link${num}`);
+            let url = 'javascript:void(0)';
+
+            //href属性の値を書き換える
+            link.setAttribute('href', url);
+        }
+    }
+    
+    //最下層ボタンの有効化
+    //初期表示は非表示
+    document.getElementById("prev-button").style.visibility = "hidden";
+    document.getElementById("next-button").style.visibility = "hidden";
+
+    //戻るボタンの有効化
+    if(page_start != 1){
+        document.getElementById("prev-button").style.visibility = "visible";
+        document.getElementById('page-num1').value = page_set_num - 1;
+    }
+    //次へボタンの有効化
+    if(page_end < image_path.length){
+        document.getElementById("next-button").style.visibility = "visible";
+        document.getElementById('page-num2').value = page_set_num + 1;
+    }
+
+
 </script>
 {% endblock %}
