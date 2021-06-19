@@ -189,7 +189,6 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-image: url(images/top-page/1.jpg);
     background-color: rgb(216, 216, 216);
     opacity:0.7;
     transition: all 1s;
