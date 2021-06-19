@@ -35,6 +35,7 @@ class ProductDB(db.Model):
     color = db.Column(db.String(1440000), nullable=False)
     title = db.Column(db.String(128), nullable=False)
     path = db.Column(db.String(128), nullable=False)
+    thumbnail = db.Column(db.String(128), nullable=False)
     created_at = db.Column(db.String(100), default=datetime.datetime.now)
     updated_at = db.Column(db.String(100), default=datetime.datetime.now, onupdate=datetime.datetime.now)
     
@@ -75,6 +76,15 @@ def registed():
     else:
         return redirect(url_for('regist'))
     
+@app.route("/view")
+def show():
+    print('Hi')
+    return render_template("viewer.html")
+
+@app.route("/testRedirect")
+def test():
+    return redirect(url_for('show'))
+    
 @app.route("/goRegist", methods=["POST"])
 def go_to_regist_view():
     return redirect(url_for('regist'))
@@ -109,7 +119,6 @@ def regist_data():
     enc_data = request.form['picture']
     dec_data = base64.b64decode(enc_data.split(',')[1])
     dec_img = Image.open(BytesIO(dec_data))
-    
     # tileの保存
     image_name = method.getImageName()#保存用の名前を生成
     path_name = 'static/tile_img/' + title + '_' + image_name + '.png'
@@ -119,10 +128,10 @@ def regist_data():
     #画像にエンコード(入力画像)
     dec_input = base64.b64decode(base64_input.split(',')[1])
     input_img = Image.open(BytesIO(dec_input))
-    
     # 入力画像の保存
-    path_name = 'static/img/' + title + '_' + image_name + '.png'
-    input_img.save(path_name)#画像の書き出し
+    thumbnail_name = 'static/img/' + title + '_' + image_name + '.png'
+    input_img = method.productThumbnail(input_img)# サムネイル用に切り抜き
+    input_img.save(thumbnail_name)#画像の書き出し
     
     regist_db = ProductDB()#クラスをインスタンス化
     regist_db.user_name = 'guest'
@@ -130,6 +139,7 @@ def regist_data():
     regist_db.color = color_data
     regist_db.title = title
     regist_db.path = path_name
+    regist_db.thumbnail = thumbnail_name
     
     session['token'] = 'token'
     
