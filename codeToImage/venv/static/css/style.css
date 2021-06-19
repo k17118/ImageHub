@@ -67,9 +67,10 @@
     font-family: 'Bitter', serif;
 }
 
-#header-title > p{
+#header-title>p{
     float: right;
     margin-top: 5px;
+    margin-left: 10px;
 }
 
 #header-item {
@@ -100,15 +101,24 @@
 
 .title {
     text-align: left;
-    font-weight: 500;
     font-size: 20px;
+    margin-top: 5px;
+}
+
+.sub-info p{
+    float: left;
+    margin-top: -20px;
+    text-align: left;
+    vertical-align: middle;
 }
 
 .date {
-    margin-top: -20px;
-    text-align: left;
-    font-weight: 100;
     font-size: 15px;
+}
+
+.author{
+    font-size: 16px;
+    margin-left: 5px;
 }
 
 .under-banner {
