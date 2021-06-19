@@ -88,3 +88,29 @@ def cutSpace(pil_img):
     dst_image = Image.fromarray(dst_image)
     
     return(dst_image)
+
+# viewer用サムネイル画像の生成
+def productThumbnail(pil_img):
+    # PIL -> OpenCV
+    new_image = np.array(pil_img, dtype=np.uint8)
+    new_image = cv2.cvtColor(new_image, cv2.COLOR_RGB2BGR)
+    
+    #切り抜き処理
+    height, width = new_image.shape[:2]
+    
+    refer_size = min(height, width)#縦or横の最小値を取得
+    
+    center = [width/2, height/2]
+    
+    radius = int(refer_size/2)-1 #サムネイルの幅/2
+    
+    crop_img = new_image[int(center[1])-radius:int(center[1])+radius, int(center[0])-radius:int(center[0])+radius]
+    
+    dst_img = cv2.resize(crop_img, dsize=(300, 300))
+    
+    #opencv -> PIL
+    dst_image = dst_img.copy()
+    dst_image = cv2.cvtColor(dst_image, cv2.COLOR_BGR2RGB)
+    dst_image = Image.fromarray(dst_image)
+    
+    return(dst_image)
