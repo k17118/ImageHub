@@ -34,11 +34,7 @@
  
 
  
-# Usage
-```bash
-git clone https://github.com/k17118/airTouch.git
-open ./airTouch/AirTouchWithStoryboard/HandPose.xcodeproj
-```
+
 
 
  
