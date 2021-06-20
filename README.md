@@ -5,7 +5,7 @@
 # DEMO
 |web|description|
 |----|-----|
-|![resist_1](https://user-images.githubusercontent.com/50346054/122660756-a9eff980-d1be-11eb-9519-5fdea436913c.gif)||
+|![resist_1](https://user-images.githubusercontent.com/50346054/122660756-a9eff980-d1be-11eb-9519-5fdea436913c.gif)|任意の画像とソースコードを選択しオリジナル画像を生成|
 |![ImageHub_save](https://user-images.githubusercontent.com/50346054/122660314-7bbcea80-d1bb-11eb-9e1f-44c7440a350e.gif)|これまでに作成した作品の画像を保存・ソースコードのコピーが可能|
  
 # Features
