@@ -241,6 +241,8 @@ def regist_confirmation():
 def regist_data():
     
     title = request.form['name']
+    if len(title) == 0:
+        title = 'No title'
     
     #画像にエンコード(tile画像)
     enc_data = request.form['picture']
