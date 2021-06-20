@@ -306,13 +306,13 @@ def download_img():
     XLSX_MIMETYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     moe_pic = ProductDB.query.filter_by(id = int(usr_id)).all()
     img_path = moe_pic[0].path
-    img_title = moe_pic[0].title
+    # img_title = moe_pic[0].title
     response = make_response()
     
     # print(img_path)
     response.data = open(img_path, "rb").read()
 
-    downloadFileName = img_title + '.png'
+    downloadFileName = 'download.png'
     response.headers['Content-Disposition'] = 'attachment; filename=' + downloadFileName
 
 
@@ -322,7 +322,7 @@ def download_img():
 @app.route("/text_download", methods=["GET", "POST"])
 def download_text():
     # usr_id = 1
-    # usr_id = session["id"]
+    usr_id = session["id"]
     moe_pic = ProductDB.query.filter_by(id = int(usr_id)).all()
     img_code = moe_pic[0].code
     img_code = method.splitCodeText(img_code)
