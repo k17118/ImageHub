@@ -22,9 +22,12 @@
 # Requirement
  
  
-* Xcode 12.4
-* swift 5
-* ios 14.0
+* Flask 1.1.2
+* Flask-SQLALchemy 2.5.1
+* opencv-python 4.5.1.48
+* Pillow 8.2.0
+* numpy 1.19.5
+* pyperclip 1.8.2
 
  
 
