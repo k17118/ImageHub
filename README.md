@@ -13,7 +13,7 @@
 <img width="256" alt="スクリーンショット 2021-04-25 11 55 37" src="https://user-images.githubusercontent.com/50346054/115978931-b4768400-a5bd-11eb-8097-15eab2cd8a18.png">
 <img width="256" alt="スクリーンショット 2021-04-25 11 55 50" src="https://user-images.githubusercontent.com/50346054/115978932-b50f1a80-a5bd-11eb-9bcc-6699ff8884a8.png">
 </p> -->
-<img width=256" src="https://user-images.githubusercontent.com/50346054/122659579-87f17980-d1b4-11eb-8cd4-e13fb10d0648.png">
+<img width=256" alt="src_img" src="https://user-images.githubusercontent.com/50346054/122659579-87f17980-d1b4-11eb-8cd4-e13fb10d0648.png">
 
 
 |pose|description|
