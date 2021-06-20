@@ -2,7 +2,8 @@
 
 あなたのソースコードからオリジナルの画像を作成・共有できます.
  
-
+# DEMO
+ ![resize1](https://user-images.githubusercontent.com/50346054/115980186-82692000-a5c5-11eb-90f4-a86872d3410a.gif)
  
 # Features
  
