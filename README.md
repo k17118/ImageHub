@@ -3,7 +3,7 @@
 あなたのソースコードからオリジナルの画像を作成・共有できます.
  
 # DEMO
-|before|after|
+|before|description|
 |----|-----|
 |![ImageHub_save](https://user-images.githubusercontent.com/50346054/122660314-7bbcea80-d1bb-11eb-9e1f-44c7440a350e.gif)|これまでに作成した作品の画像を保存・ソースコードのコピーが可能|
  
