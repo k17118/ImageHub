@@ -1,9 +1,12 @@
 # ImageHub
 
-あなたのソースコードからオリジナルの画像を作成・共有できます.
+あなたのソースコードからオリジナルの画像を作成・共有できるwebアプリケーションです．
  
 # DEMO
- ![resize1](https://user-images.githubusercontent.com/50346054/115980186-82692000-a5c5-11eb-90f4-a86872d3410a.gif)
+|web|description|
+|----|-----|
+|![resist_1](https://user-images.githubusercontent.com/50346054/122660756-a9eff980-d1be-11eb-9519-5fdea436913c.gif)|任意の画像とソースコードを選択しオリジナル画像を生成|
+|![ImageHub_save](https://user-images.githubusercontent.com/50346054/122660314-7bbcea80-d1bb-11eb-9e1f-44c7440a350e.gif)|これまでに作成した作品の画像を保存・ソースコードのコピーが可能|
  
 # Features
  
@@ -13,11 +16,10 @@
 <img width="256" alt="スクリーンショット 2021-04-25 11 55 37" src="https://user-images.githubusercontent.com/50346054/115978931-b4768400-a5bd-11eb-8097-15eab2cd8a18.png">
 <img width="256" alt="スクリーンショット 2021-04-25 11 55 50" src="https://user-images.githubusercontent.com/50346054/115978932-b50f1a80-a5bd-11eb-9bcc-6699ff8884a8.png">
 </p> -->
-|pose|description|
+|before|after|
 |----|-----|
-|<img width="256" alt="スクリーンショット 2021-04-25 11 55 22" src="https://user-images.githubusercontent.com/50346054/115978926-b04a6680-a5bd-11eb-8a4a-56f5d859f36e.png">|人差し指と中指を下に向けることで下スクロールができます|
-|<img width="256" alt="スクリーンショット 2021-04-25 11 55 37" src="https://user-images.githubusercontent.com/50346054/115978931-b4768400-a5bd-11eb-8097-15eab2cd8a18.png">|人差し指と中指を上に向けることで上スクロールができます|
-|<img width="256" alt="スクリーンショット 2021-04-25 11 55 50" src="https://user-images.githubusercontent.com/50346054/115978932-b50f1a80-a5bd-11eb-9bcc-6699ff8884a8.png">|okマークを作ることでconfig画面を開くことができます|
+|<img width="256" alt="src_img" src="https://user-images.githubusercontent.com/50346054/122659770-0ef32180-d1b6-11eb-8c4c-f67a163d1439.jpg">|<img width="256" alt="dst_img" src="https://user-images.githubusercontent.com/50346054/122659650-0e0dc000-d1b5-11eb-88c3-459674627eba.jpg">|
+
 
 # Requirement
  
